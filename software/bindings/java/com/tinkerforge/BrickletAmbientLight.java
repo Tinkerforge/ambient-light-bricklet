@@ -139,6 +139,7 @@ public class BrickletAmbientLight extends Device {
 
 		int illuminance = IPConnection.unsignedShort(bb.getShort());
 
+		semaphoreWrite.release();
 		return illuminance;
 	}
 
@@ -166,6 +167,7 @@ public class BrickletAmbientLight extends Device {
 
 		int value = IPConnection.unsignedShort(bb.getShort());
 
+		semaphoreWrite.release();
 		return value;
 	}
 
@@ -204,6 +206,7 @@ public class BrickletAmbientLight extends Device {
 
 		long period = IPConnection.unsignedInt(bb.getInt());
 
+		semaphoreWrite.release();
 		return period;
 	}
 
@@ -242,6 +245,7 @@ public class BrickletAmbientLight extends Device {
 
 		long period = IPConnection.unsignedInt(bb.getInt());
 
+		semaphoreWrite.release();
 		return period;
 	}
 
@@ -285,6 +289,7 @@ public class BrickletAmbientLight extends Device {
 		obj.min = (bb.getShort());
 		obj.max = (bb.getShort());
 
+		semaphoreWrite.release();
 		return obj;
 	}
 
@@ -328,6 +333,7 @@ public class BrickletAmbientLight extends Device {
 		obj.min = IPConnection.unsignedShort(bb.getShort());
 		obj.max = IPConnection.unsignedShort(bb.getShort());
 
+		semaphoreWrite.release();
 		return obj;
 	}
 
@@ -366,6 +372,7 @@ public class BrickletAmbientLight extends Device {
 
 		long debounce = IPConnection.unsignedInt(bb.getInt());
 
+		semaphoreWrite.release();
 		return debounce;
 	}
 

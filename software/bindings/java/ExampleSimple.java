@@ -19,7 +19,7 @@ public class ExampleSimple {
 		// Get current illuminance (unit is Lux/10)
 		int illuminance = al.getIlluminance(); // Can throw IPConnection.TimeoutException
 
-		System.out.println("Illuminance: " + illuminance + " Lux");
+		System.out.println("Illuminance: " + illuminance/10.0 + " Lux");
 		
 		System.out.println("Press ctrl+c to exit");
 		ipcon.joinThread();
