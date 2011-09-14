@@ -9,10 +9,13 @@ public class ExampleThreshold {
 	// Note: To make the example code cleaner we do not handle exceptions. Exceptions you
 	//       might normally want to catch are described in the commnents below
 	public static void main(String args[]) throws Exception {
-		IPConnection ipcon = new IPConnection(host, port); // Create connection to brickd (Can throw IOException)
+		// Create connection to brickd
+		IPConnection ipcon = new IPConnection(host, port); // Can throw IOException
 
 		BrickletAmbientLight al = new BrickletAmbientLight(UID); // Create device object
-		ipcon.addDevice(al); // Add device to ip connection (Can throw IPConnection.TimeoutException)
+
+		// Add device to ip connection
+		ipcon.addDevice(al); // Can throw IPConnection.TimeoutException
 		// Don't use device before it is added to a connection
 		
 
@@ -22,7 +25,8 @@ public class ExampleThreshold {
 		// Configure threshold for "greater than 200 Lux" (unit is Lux/10)
 		al.setIlluminanceCallbackThreshold('>', (short)(200*10), (short)0);
 
-		// Add and implement illuminance reached listener (called if illuminance is greater than 200 lux)
+		// Add and implement illuminance reached listener 
+		// (called if illuminance is greater than 200 lux)
 		al.addListener(new BrickletAmbientLight.IlluminanceReachedListener() {
 			public void illuminanceReached(int illuminance) {
 				System.out.println("We have: " + illuminance/10.0 + " Lux.");
