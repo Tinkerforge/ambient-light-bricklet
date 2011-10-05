@@ -5,8 +5,8 @@ HOST = "localhost"
 PORT = 4223
 UID = "XYZ" # Change to your UID
 
-from ip_connection import IPConnection
-from bricklet_ambient_light import AmbientLight
+from tinkerforge.ip_connection import IPConnection
+from tinkerforge.bricklet_ambient_light import AmbientLight
 
 # Callback for illuminance greater than 200 Lux
 def cb_reached(illuminance):
