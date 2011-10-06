@@ -29,6 +29,11 @@
 
 #include "ambient-light.h"
 
+#define BRICKLET_HARDWARE_NAME "Ambient Light Bricklet 1.0"
+#define BRICKLET_FIRMWARE_VERSION_MAJOR 1
+#define BRICKLET_FIRMWARE_VERSION_MINOR 0
+#define BRICKLET_FIRMWARE_VERSION_REVISION 0
+
 #define MAX_ADC_VALUE ((1  << 12) - 1)
 #define MAX_VOLTAGE 3300
 
