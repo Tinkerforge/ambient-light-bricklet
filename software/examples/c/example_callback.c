@@ -1,7 +1,3 @@
-// tested with 
-// gcc -lpthread -lrt -o example_callback bricklet_ambient_light.c 
-//     ip_connection.c example_callback.c
-// on Ubuntu
 
 #include <stdio.h>
 
