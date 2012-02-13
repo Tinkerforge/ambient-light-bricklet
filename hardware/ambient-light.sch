@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Do 25 Aug 2011 12:50:25 CEST
+EESchema Schematic File Version 2  date Fr 30 Dez 2011 10:03:10 CET
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -37,8 +37,8 @@ $Descr A4 11700 8267
 encoding utf-8
 Sheet 1 1
 Title "Ambient Light Bricklet"
-Date "25 aug 2011"
-Rev "1.0"
+Date "28 dec 2011"
+Rev "1.1"
 Comp "Tinkerforge GmbH"
 Comment1 "Licensed under CERN OHL v.1.1"
 Comment2 "Copyright (©) 2011, B.Nordmeyer <bastian@tinkerforge.com>"
@@ -60,8 +60,6 @@ Wire Wire Line
 	4000 3900 4350 3900
 Wire Wire Line
 	7500 3850 7500 3900
-Wire Wire Line
-	3950 5050 3950 4850
 Wire Wire Line
 	5150 4650 5150 4550
 Connection ~ 7700 3850
@@ -103,9 +101,6 @@ Wire Wire Line
 	5150 4550 5200 4550
 Connection ~ 5150 4550
 Wire Wire Line
-	3950 4350 4150 4350
-Connection ~ 4150 4350
-Wire Wire Line
 	4000 3800 4350 3800
 Wire Wire Line
 	7950 3850 7300 3850
@@ -123,10 +118,10 @@ Wire Wire Line
 Text GLabel 4350 4000 2    60   Output ~ 0
 OUT_3
 $Comp
-L R R2
+L R R1
 U 1 1 4D37E80B
 P 7300 4150
-F 0 "R2" V 7380 4150 50  0000 C CNN
+F 0 "R1" V 7380 4150 50  0000 C CNN
 F 1 "68k" V 7300 4150 50  0000 C CNN
 F 2 "0603" H 7300 4150 60  0001 C CNN
 	1    7300 4150
@@ -143,40 +138,21 @@ OUT_2
 Text GLabel 4350 3800 2    60   Output ~ 0
 OUT_1
 $Comp
-L R R3
+L R R2
 U 1 1 4D37E7C6
 P 7500 4150
-F 0 "R3" V 7580 4150 50  0000 C CNN
+F 0 "R2" V 7580 4150 50  0000 C CNN
 F 1 "47k" V 7500 4150 50  0000 C CNN
 F 2 "0603" H 7500 4150 60  0001 C CNN
 	1    7500 4150
 	1    0    0    -1  
 $EndComp
-$Comp
-L GND #PWR2
-U 1 1 4CE1498F
-P 3950 5050
-F 0 "#PWR2" H 3950 5050 30  0001 C CNN
-F 1 "GND" H 3950 4980 30  0001 C CNN
-	1    3950 5050
-	1    0    0    -1  
-$EndComp
-$Comp
-L R R1
-U 1 1 4CE14986
-P 3950 4600
-F 0 "R1" V 4030 4600 50  0000 C CNN
-F 1 "DNP" V 3950 4600 50  0000 C CNN
-F 2 "0603" H 3950 4600 60  0001 C CNN
-	1    3950 4600
-	1    0    0    -1  
-$EndComp
 NoConn ~ 5150 4750
 $Comp
-L GND #PWR7
+L GND #PWR6
 U 1 1 4CE147DC
 P 5600 4650
-F 0 "#PWR7" H 5600 4650 30  0001 C CNN
+F 0 "#PWR6" H 5600 4650 30  0001 C CNN
 F 1 "GND" H 5600 4580 30  0001 C CNN
 	1    5600 4650
 	1    0    0    -1  
@@ -234,19 +210,19 @@ $EndComp
 Text GLabel 7950 3850 2    60   Output ~ 0
 IN_1
 $Comp
-L VCC #PWR8
+L VCC #PWR7
 U 1 1 4C692AFC
 P 7700 3350
-F 0 "#PWR8" H 7700 3450 30  0001 C CNN
+F 0 "#PWR7" H 7700 3450 30  0001 C CNN
 F 1 "VCC" H 7700 3450 30  0000 C CNN
 	1    7700 3350
 	1    0    0    -1  
 $EndComp
 $Comp
-L R R4
+L R R3
 U 1 1 4C692AEE
 P 7700 4150
-F 0 "R4" V 7780 4150 50  0000 C CNN
+F 0 "R3" V 7780 4150 50  0000 C CNN
 F 1 "10k" V 7700 4150 50  0000 C CNN
 F 2 "0603" H 7700 4150 60  0001 C CNN
 	1    7700 4150
@@ -273,19 +249,19 @@ SDA
 Text GLabel 4350 3400 2    60   Output ~ 0
 SCL
 $Comp
-L VCC #PWR6
+L VCC #PWR5
 U 1 1 4C5FD35E
 P 5150 4550
-F 0 "#PWR6" H 5150 4650 30  0001 C CNN
+F 0 "#PWR5" H 5150 4650 30  0001 C CNN
 F 1 "VCC" H 5150 4650 30  0000 C CNN
 	1    5150 4550
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR5
+L GND #PWR4
 U 1 1 4C5FD34E
 P 4250 5050
-F 0 "#PWR5" H 4250 5050 30  0001 C CNN
+F 0 "#PWR4" H 4250 5050 30  0001 C CNN
 F 1 "GND" H 4250 4980 30  0001 C CNN
 	1    4250 5050
 	1    0    0    -1  
@@ -301,19 +277,19 @@ F 2 "TSSOP8" H 4750 5050 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L VCC #PWR3
+L VCC #PWR2
 U 1 1 4C5FCFB4
 P 4150 3050
-F 0 "#PWR3" H 4150 3150 30  0001 C CNN
+F 0 "#PWR2" H 4150 3150 30  0001 C CNN
 F 1 "VCC" H 4150 3150 30  0000 C CNN
 	1    4150 3050
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR4
+L GND #PWR3
 U 1 1 4C5FCF5E
 P 4250 3350
-F 0 "#PWR4" H 4250 3350 30  0001 C CNN
+F 0 "#PWR3" H 4250 3350 30  0001 C CNN
 F 1 "GND" H 4250 3280 30  0001 C CNN
 	1    4250 3350
 	1    0    0    -1  
