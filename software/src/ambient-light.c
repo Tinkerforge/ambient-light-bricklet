@@ -211,6 +211,6 @@ int32_t illuminance_from_analog_value(int32_t value) {
 	return BC->value_avg;
 }
 
-void tick(void) {
-	simple_tick();
+void tick(uint8_t tick_type) {
+	simple_tick(tick_type);
 }
