@@ -16,9 +16,8 @@ class Example
 	{
 		IPConnection ipcon = new IPConnection(HOST, PORT); // Create connection to brickd
 		BrickletAmbientLight al = new BrickletAmbientLight(UID); // Create device object
-		ipcon.AddDevice(al); // Add device to ip connection
+		ipcon.AddDevice(al); // Add device to IP connection
 		// Don't use device before it is added to a connection
-
 
 		// Set Period for illuminance callback to 1s (1000ms)
 		// Note: The illuminance callback is only called every second if the 
@@ -30,5 +29,5 @@ class Example
 
 		System.Console.WriteLine("Press ctrl+c to exit");
 		ipcon.JoinThread();
-    }
+	}
 }

@@ -11,19 +11,17 @@ public class ExampleSimple {
 	public static void main(String args[]) throws Exception {
 		// Create connection to brickd
 		IPConnection ipcon = new IPConnection(host, port); // Can throw IOException
-
 		BrickletAmbientLight al = new BrickletAmbientLight(UID); // Create device object
 
-		// Add device to ip connection
+		// Add device to IP connection
 		ipcon.addDevice(al); // Can throw IPConnection.TimeoutException
 		// Don't use device before it is added to a connection
-		
 
 		// Get current illuminance (unit is Lux/10)
 		int illuminance = al.getIlluminance(); // Can throw IPConnection.TimeoutException
 
 		System.out.println("Illuminance: " + illuminance/10.0 + " Lux");
-		
+
 		System.out.println("Press ctrl+c to exit");
 		ipcon.joinThread();
 	}

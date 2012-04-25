@@ -14,10 +14,10 @@ def cb_reached(illuminance):
     print('Too bright, close the curtains!')
 
 if __name__ == "__main__":
-    ipcon = IPConnection(HOST, PORT) # Create ip connection to brickd
+    ipcon = IPConnection(HOST, PORT) # Create IP connection to brickd
 
     al = AmbientLight(UID) # Create device object
-    ipcon.add_device(al) # Add device to ip connection
+    ipcon.add_device(al) # Add device to IP connection
     # Don't use device before it is added to a connection
 
     # Get threshold callbacks with a debounce time of 10 seconds (10000ms)

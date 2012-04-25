@@ -10,9 +10,8 @@ class Example
 	{
 		IPConnection ipcon = new IPConnection(HOST, PORT); // Create connection to brickd
 		BrickletAmbientLight al = new BrickletAmbientLight(UID); // Create device object
-		ipcon.AddDevice(al); // Add device to ip connection
+		ipcon.AddDevice(al); // Add device to IP connection
 		// Don't use device before it is added to a connection
-
 
 		// Get current illuminance (unit is Lux/10)
 		ushort illuminance;
@@ -22,5 +21,5 @@ class Example
 
 		System.Console.WriteLine("Press ctrl+c to exit");
 		ipcon.JoinThread();
-    }
+	}
 }
