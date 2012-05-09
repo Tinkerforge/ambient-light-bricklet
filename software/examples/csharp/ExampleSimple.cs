@@ -14,8 +14,7 @@ class Example
 		// Don't use device before it is added to a connection
 
 		// Get current illuminance (unit is Lux/10)
-		ushort illuminance;
-		al.GetIlluminance(out illuminance);
+		ushort illuminance = al.GetIlluminance();
 
 		System.Console.WriteLine("Illuminance: " + illuminance/10.0 + " Lux");
 
