@@ -19,7 +19,7 @@ ipcon.add_device al # Add device to IP connection
 al.set_debounce_period 10000
 
 # Register threshold reached callback for illuminance greater than 200 Lux
-al.register_callback BrickletAmbientLight::CALLBACK_ILLUMINANCE_REACHED, do |illuminance|
+al.register_callback(BrickletAmbientLight::CALLBACK_ILLUMINANCE_REACHED) do |illuminance|
   puts "We have #{illuminance/10.0} Lux."
   puts "Too bright, close the curtains!"
 end

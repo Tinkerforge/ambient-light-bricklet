@@ -21,7 +21,7 @@ ipcon.add_device al # Add device to IP connection
 al.set_illuminance_callback_period 1000
 
 # Register illuminance callback (parameter has unit Lux/10)
-al.register_callback BrickletAmbientLight::CALLBACK_ILLUMINANCE, do |illuminance|
+al.register_callback(BrickletAmbientLight::CALLBACK_ILLUMINANCE) do |illuminance|
   puts "Illuminance: #{illuminance/10.0} Lux"
 end
 
