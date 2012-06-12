@@ -22,7 +22,7 @@ public class ExampleSimple {
 
 		System.out.println("Illuminance: " + illuminance/10.0 + " Lux");
 
-		System.out.println("Press ctrl+c to exit");
-		ipcon.joinThread();
+		System.console().readLine("Press key to exit\n");
+		ipcon.destroy();
 	}
 }

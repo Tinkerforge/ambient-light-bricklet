@@ -44,6 +44,7 @@ int main() {
 	// Configure threshold for "greater than 200 Lux" (unit is Lux/10)
 	ambient_light_set_illuminance_callback_threshold(&al, '>', 200*10, 0);
 
-	printf("Press ctrl+c to close\n");
-	ipcon_join_thread(&ipcon); // Join mainloop of IP connection
+	printf("Press key to exit\n");
+	getchar();
+	ipcon_destroy(&ipcon);
 }

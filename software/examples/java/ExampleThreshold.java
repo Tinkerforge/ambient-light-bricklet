@@ -32,7 +32,7 @@ public class ExampleThreshold {
 			}
 		});
 
-		System.out.println("Press ctrl+c to exit");
-		ipcon.joinThread();
+		System.console().readLine("Press key to exit\n");
+		ipcon.destroy();
 	}
 }

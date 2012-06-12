@@ -29,7 +29,8 @@ class Example
 		// Configure threshold for "greater than 200 Lux" (unit is Lux/10)
 		al.SetIlluminanceCallbackThreshold('>', 200*10, 0);
 
-		System.Console.WriteLine("Press ctrl+c to exit");
-		ipcon.JoinThread();
+		System.Console.WriteLine("Press key to exit");
+		System.Console.ReadKey();
+		ipcon.Destroy();
 	}
 }

@@ -42,6 +42,7 @@ int main() {
 	                                AMBIENT_LIGHT_CALLBACK_ILLUMINANCE, 
 	                                cb_illuminance);
 
-	printf("Press ctrl+c to close\n");
-	ipcon_join_thread(&ipcon); // Join mainloop of IP connection
+	printf("Press key to exit\n");
+	getchar();
+	ipcon_destroy(&ipcon);
 }
