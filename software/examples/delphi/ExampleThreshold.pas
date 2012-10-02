@@ -10,7 +10,7 @@ type
   TExample = class
   private
     ipcon: TIPConnection;
-    am: TBrickletAmbientLight;
+    al: TBrickletAmbientLight;
   public
     procedure ReachedCB(const illuminance: word);
     procedure Execute;
@@ -37,20 +37,20 @@ begin
   ipcon := TIPConnection.Create(HOST, PORT);
 
   { Create device object }
-  am := TBrickletAmbientLight.Create(UID);
+  al := TBrickletAmbientLight.Create(UID);
 
   { Add device to IP connection }
-  ipcon.AddDevice(am);
+  ipcon.AddDevice(al);
   { Don't use device before it is added to a connection }
 
   { Get threshold callbacks with a debounce time of 10 seconds (10000ms) }
-  am.SetDebouncePeriod(10000);
+  al.SetDebouncePeriod(10000);
 
   { Register threshold reached callback to procedure ReachedCB }
-  am.OnIlluminanceReached := {$ifdef FPC}@{$endif}ReachedCB;
+  al.OnIlluminanceReached := {$ifdef FPC}@{$endif}ReachedCB;
 
   { Configure threshold for "greater than 200 Lux" (unit is Lux/10) }
-  am.SetIlluminanceCallbackThreshold('>', 200*10, 0);
+  al.SetIlluminanceCallbackThreshold('>', 200*10, 0);
 
   WriteLn('Press key to exit');
   ReadLn;
