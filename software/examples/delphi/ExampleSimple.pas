@@ -10,7 +10,7 @@ type
   TExample = class
   private
     ipcon: TIPConnection;
-    am: TBrickletAmbientLight;
+    al: TBrickletAmbientLight;
   public
     procedure Execute;
   end;
@@ -30,14 +30,14 @@ begin
   ipcon := TIPConnection.Create(HOST, PORT);
 
   { Create device object }
-  am := TBrickletAmbientLight.Create(UID);
+  al := TBrickletAmbientLight.Create(UID);
 
   { Add device to IP connection }
-  ipcon.AddDevice(am);
+  ipcon.AddDevice(al);
   { Don't use device before it is added to a connection }
 
   { Get current illuminance (unit is Lux/10) }
-  illuminance := am.GetIlluminance;
+  illuminance := al.GetIlluminance;
   WriteLn(Format('Illuminance: %f Lux', [illuminance/10.0]));
 
   WriteLn('Press key to exit');

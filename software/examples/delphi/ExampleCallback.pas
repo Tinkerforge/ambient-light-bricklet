@@ -10,7 +10,7 @@ type
   TExample = class
   private
     ipcon: TIPConnection;
-    am: TBrickletAmbientLight;
+    al: TBrickletAmbientLight;
   public
     procedure IlluminanceCB(const illuminance: word);
     procedure Execute;
@@ -36,19 +36,19 @@ begin
   ipcon := TIPConnection.Create(HOST, PORT);
 
   { Create device object }
-  am := TBrickletAmbientLight.Create(UID);
+  al := TBrickletAmbientLight.Create(UID);
 
   { Add device to IP connection }
-  ipcon.AddDevice(am);
+  ipcon.AddDevice(al);
   { Don't use device before it is added to a connection }
 
   { Set Period for illuminance callback to 1s (1000ms)
     Note: The illuminance callback is only called every second if the
           illuminance has changed since the last call! }
-  am.SetIlluminanceCallbackPeriod(1000);
+  al.SetIlluminanceCallbackPeriod(1000);
 
   { Register illuminance callback to procedure IlluminanceCB }
-  am.OnIlluminance := {$ifdef FPC}@{$endif}IlluminanceCB;
+  al.OnIlluminance := {$ifdef FPC}@{$endif}IlluminanceCB;
 
   WriteLn('Press key to exit');
   ReadLn;
