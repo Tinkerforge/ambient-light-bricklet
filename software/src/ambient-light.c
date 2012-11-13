@@ -1,5 +1,5 @@
 /* ambient-light-bricklet
- * Copyright (C) 2010-2011 Olaf Lüke <olaf@tinkerforge.com>
+ * Copyright (C) 2010-2012 Olaf Lüke <olaf@tinkerforge.com>
  *
  * ambient-light.c: Implementation of Ambient Light Bricklet messages
  *
@@ -20,10 +20,10 @@
  */
 
 #include "ambient-light.h"
-#include <adc/adc.h>
 
 #include "bricklib/bricklet/bricklet_communication.h"
 #include "bricklib/utility/util_definitions.h"
+#include "bricklib/drivers/adc/adc.h"
 #include "brickletlib/bricklet_entry.h"
 #include "brickletlib/bricklet_simple.h"
 #include "config.h"
@@ -49,13 +49,19 @@ const SimpleMessageProperty smp[] = {
 };
 
 const SimpleUnitProperty sup[] = {
-	{illuminance_from_analog_value, SIMPLE_SIGNEDNESS_INT, TYPE_ILLUMINANCE, TYPE_ILLUMINANCE_REACHED, SIMPLE_UNIT_ANALOG_VALUE}, // illuminance
-	{analog_value_from_mc, SIMPLE_SIGNEDNESS_UINT, TYPE_ANALOG_VALUE, TYPE_ANALOG_VALUE_REACHED, SIMPLE_UNIT_ANALOG_VALUE}, // analog value
+	{illuminance_from_analog_value, SIMPLE_SIGNEDNESS_INT, FID_ILLUMINANCE, FID_ILLUMINANCE_REACHED, SIMPLE_UNIT_ANALOG_VALUE}, // illuminance
+	{analog_value_from_mc, SIMPLE_SIGNEDNESS_UINT, FID_ANALOG_VALUE, FID_ANALOG_VALUE_REACHED, SIMPLE_UNIT_ANALOG_VALUE}, // analog value
 };
 
+const uint8_t smp_length = sizeof(smp);
 
-void invocation(uint8_t com, uint8_t *data) {
+
+void invocation(const ComType com, const uint8_t *data) {
 	simple_invocation(com, data);
+
+	if(((MessageHeader*)data)->fid > FID_LAST) {
+		BA->com_return_error(data, sizeof(MessageHeader), MESSAGE_ERROR_CODE_NOT_SUPPORTED, com);
+	}
 }
 
 void constructor(void) {
@@ -154,7 +160,7 @@ void set_new_resistor(void) {
 	BC->new_resistor_set = 10;
 }
 
-void update_resistor(uint16_t value) {
+void update_resistor(const uint16_t value) {
 	if(value > 3800) {
 		if(BC->current_resistor > 0) {
 			BC->new_resistor = BC->current_resistor -1;
@@ -168,7 +174,7 @@ void update_resistor(uint16_t value) {
 	}
 }
 
-int32_t analog_value_from_mc(int32_t value) {
+int32_t analog_value_from_mc(const int32_t value) {
 	if(BC->new_resistor_set > 0) {
 		return BC->value[0];
 	}
@@ -177,7 +183,7 @@ int32_t analog_value_from_mc(int32_t value) {
 	return analog_value;
 }
 
-int32_t illuminance_from_analog_value(int32_t value) {
+int32_t illuminance_from_analog_value(const int32_t value) {
 	if(BC->new_resistor_set > 0) {
 		BC->new_resistor_set--;
 		return BC->value[1];
@@ -211,6 +217,6 @@ int32_t illuminance_from_analog_value(int32_t value) {
 	return BC->value_avg;
 }
 
-void tick(uint8_t tick_type) {
+void tick(const uint8_t tick_type) {
 	simple_tick(tick_type);
 }

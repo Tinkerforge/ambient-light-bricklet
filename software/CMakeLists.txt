@@ -15,10 +15,6 @@ SET(CMAKE_BUILD_TYPE None)
 
 INCLUDE_DIRECTORIES(
 	"${PROJECT_SOURCE_DIR}/src/"
-	"${PROJECT_SOURCE_DIR}/src/bricklib/free_rtos"
-	"${PROJECT_SOURCE_DIR}/src/bricklib/free_rtos/include"
-	"${PROJECT_SOURCE_DIR}/src/bricklib/free_rtos/portable/GCC/ARM_CM3"
-	"${PROJECT_SOURCE_DIR}/src/bricklib/drivers/"
 )
 
 # find source files
@@ -33,7 +29,7 @@ SET_TARGET_PROPERTIES(${PROJECT_NAME}.elf PROPERTIES LINKER_LANGUAGE C)
 
 # define compile flags 
 SET_TARGET_PROPERTIES(${PROJECT_NAME}.elf PROPERTIES COMPILE_FLAGS
-	"${DEBUG} -mcpu=${MCU} -std=gnu99  -Wall -mlong-calls -ffunction-sections -O${OPTIMIZATION_LEVEL} -fPIE -pie"
+	"${DEBUG} -mcpu=${MCU} -std=gnu99 -Wall -mlong-calls -ffunction-sections -O${OPTIMIZATION_LEVEL} -fPIE -pie"
 )
 
 #define linker flags 
