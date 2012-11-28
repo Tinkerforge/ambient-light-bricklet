@@ -13,11 +13,11 @@ def cb_illuminance(illuminance):
     print('Illuminance: ' + str(illuminance/10.0) + ' Lux')
 
 if __name__ == "__main__":
-    ipcon = IPConnection(HOST, PORT) # Create IP connection to brickd
+    ipcon = IPConnection() # Create IP connection
+    al = AmbientLight(UID, ipcon) # Create device object
 
-    al = AmbientLight(UID) # Create device object
-    ipcon.add_device(al) # Add device to IP connection
-    # Don't use device before it is added to a connection
+    ipcon.connect(HOST, PORT) # Connect to brickd
+    # Don't use device before ipcon is connected
 
     # Set Period for illuminance callback to 1s (1000ms)
     # Note: The illuminance callback is only called every second if the 
@@ -28,4 +28,3 @@ if __name__ == "__main__":
     al.register_callback(al.CALLBACK_ILLUMINANCE, cb_illuminance)
 
     raw_input('Press key to exit\n') # Use input() in Python 3
-    ipcon.destroy()
