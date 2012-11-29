@@ -10,10 +10,11 @@ HOST = 'localhost'
 PORT = 4223
 UID = '7tS' # Change to your UID
 
-ipcon = IPConnection.new HOST, PORT # Create IP connection to brickd
-al = BrickletAmbientLight.new UID # Create device object
-ipcon.add_device al # Add device to IP connection
-# Don't use device before it is added to a connection
+ipcon = IPConnection.new # Create IP connection
+al = BrickletAmbientLight.new UID, ipcon # Create device object
+
+ipcon.connect HOST, PORT # Connect to brickd
+# Don't use device before ipcon is connected
 
 # Get threshold callbacks with a debounce time of 10 seconds (10000ms)
 al.set_debounce_period 10000
@@ -29,4 +30,3 @@ al.set_illuminance_callback_threshold '>', 200*10, 0
 
 puts 'Press key to exit'
 $stdin.gets
-ipcon.destroy
