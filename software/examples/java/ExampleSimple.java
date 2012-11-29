@@ -7,15 +7,13 @@ public class ExampleSimple {
 	private static final String UID = "ABC"; // Change to your UID
 	
 	// Note: To make the example code cleaner we do not handle exceptions. Exceptions you
-	//       might normally want to catch are described in the commnents below
+	//       might normally want to catch are described in the documentation
 	public static void main(String args[]) throws Exception {
-		// Create connection to brickd
-		IPConnection ipcon = new IPConnection(host, port); // Can throw IOException
-		BrickletAmbientLight al = new BrickletAmbientLight(UID); // Create device object
+		IPConnection ipcon = new IPConnection(); // Create IP connection
+		BrickletAmbientLight al = new BrickletAmbientLight(UID, ipcon); // Create device object
 
-		// Add device to IP connection
-		ipcon.addDevice(al); // Can throw IPConnection.TimeoutException
-		// Don't use device before it is added to a connection
+		ipcon.connect(host, port); // Connect to brickd
+		// Don't use device before ipcon is connected
 
 		// Get current illuminance (unit is Lux/10)
 		int illuminance = al.getIlluminance(); // Can throw IPConnection.TimeoutException
