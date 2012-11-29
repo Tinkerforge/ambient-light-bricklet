@@ -16,11 +16,11 @@ function cb_illuminance($illuminance)
     echo "Illuminance: " . $illuminance / 10.0 . " Lux\n";
 }
 
-$ipcon = new IPConnection($host, $port); // Create IP connection to brickd
-$al = new BrickletAmbientLight($uid); // Create device object
+$ipcon = new IPConnection(); // Create IP connection
+$al = new BrickletAmbientLight($uid, $ipcon); // Create device object
 
-$ipcon->addDevice($al); // Add device to IP connection
-// Don't use device before it is added to a connection
+$ipcon->connect($host, $port); // Connect to brickd
+// Don't use device before ipcon is connected
 
 // Set Period for illuminance callback to 1s (1000ms)
 // Note: The illuminance callback is only called every second if the
