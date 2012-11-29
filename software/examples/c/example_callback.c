@@ -9,28 +9,25 @@
 #define UID "XYZ" // Change to your UID
 
 // Callback function for illuminance callback (parameter has unit Lux/10)
-void cb_illuminance(uint16_t illuminance) {
+void cb_illuminance(uint16_t illuminance, void *user_data) {
 	printf("Illuminance: %f Lux.\n", illuminance/10.0);
 }
 
 int main() {
-	// Create IP connection to brickd
+	// Create IP connection
 	IPConnection ipcon;
-	if(ipcon_create(&ipcon, HOST, PORT) < 0) {
-		fprintf(stderr, "Could not create connection\n");
-		exit(1);
-	}
+	ipcon_create(&ipcon);
 
 	// Create device object
 	AmbientLight al;
-	ambient_light_create(&al, UID); 
+	ambient_light_create(&al, UID, &ipcon); 
 
-	// Add device to IP connection
-	if(ipcon_add_device(&ipcon, &al) < 0) {
-		fprintf(stderr, "Could not connect to Bricklet\n");
+	// Connect to brickd
+	if(ipcon_connect(&ipcon, HOST, PORT) < 0) {
+		fprintf(stderr, "Could not connect\n");
 		exit(1);
 	}
-	// Don't use device before it is added to a connection
+	// Don't use device before ipcon is connected
 
 	// Set Period for illuminance callback to 1s (1000ms)
 	// Note: The illuminance callback is only called every second if the 
@@ -40,7 +37,8 @@ int main() {
 	// Register illuminance callback to function cb_illuminance
 	ambient_light_register_callback(&al,
 	                                AMBIENT_LIGHT_CALLBACK_ILLUMINANCE, 
-	                                cb_illuminance);
+	                                cb_illuminance,
+									NULL);
 
 	printf("Press key to exit\n");
 	getchar();
