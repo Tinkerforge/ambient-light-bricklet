@@ -12,7 +12,7 @@ type
     ipcon: TIPConnection;
     al: TBrickletAmbientLight;
   public
-    procedure IlluminanceCB(const illuminance: word);
+    procedure IlluminanceCB(sender: TObject; const illuminance: word);
     procedure Execute;
   end;
 
@@ -25,22 +25,22 @@ var
   e: TExample;
 
 { Callback function for illuminance callback (parameter has unit Lux/10) }
-procedure TExample.IlluminanceCB(const illuminance: word);
+procedure TExample.IlluminanceCB(sender: TObject; const illuminance: word);
 begin
   WriteLn(Format('Illuminance: %f Lux', [illuminance/10.0]));
 end;
 
 procedure TExample.Execute;
 begin
-  { Create IP connection to brickd }
-  ipcon := TIPConnection.Create(HOST, PORT);
+  { Create IP connection }
+  ipcon := TIPConnection.Create();
 
   { Create device object }
-  al := TBrickletAmbientLight.Create(UID);
+  al := TBrickletAmbientLight.Create(UID, ipcon);
 
-  { Add device to IP connection }
-  ipcon.AddDevice(al);
-  { Don't use device before it is added to a connection }
+  { Connect to brickd }
+  ipcon.Connect(HOST, PORT);
+  { Don't use device before ipcon is connected }
 
   { Set Period for illuminance callback to 1s (1000ms)
     Note: The illuminance callback is only called every second if the
@@ -52,7 +52,6 @@ begin
 
   WriteLn('Press key to exit');
   ReadLn;
-  ipcon.Destroy;
 end;
 
 begin

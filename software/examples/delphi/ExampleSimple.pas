@@ -26,15 +26,15 @@ var
 procedure TExample.Execute;
 var illuminance: word;
 begin
-  { Create IP connection to brickd }
-  ipcon := TIPConnection.Create(HOST, PORT);
+  { Create IP connection }
+  ipcon := TIPConnection.Create();
 
   { Create device object }
-  al := TBrickletAmbientLight.Create(UID);
+  al := TBrickletAmbientLight.Create(UID, ipcon);
 
-  { Add device to IP connection }
-  ipcon.AddDevice(al);
-  { Don't use device before it is added to a connection }
+  { Connect to brickd }
+  ipcon.Connect(HOST, PORT);
+  { Don't use device before ipcon is connected }
 
   { Get current illuminance (unit is Lux/10) }
   illuminance := al.GetIlluminance;
@@ -42,7 +42,6 @@ begin
 
   WriteLn('Press key to exit');
   ReadLn;
-  ipcon.Destroy;
 end;
 
 begin
