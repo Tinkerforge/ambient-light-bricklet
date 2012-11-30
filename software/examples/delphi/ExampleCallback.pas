@@ -33,7 +33,7 @@ end;
 procedure TExample.Execute;
 begin
   { Create IP connection }
-  ipcon := TIPConnection.Create();
+  ipcon := TIPConnection.Create;
 
   { Create device object }
   al := TBrickletAmbientLight.Create(UID, ipcon);
@@ -52,6 +52,7 @@ begin
 
   WriteLn('Press key to exit');
   ReadLn;
+  ipcon.Destroy;
 end;
 
 begin
