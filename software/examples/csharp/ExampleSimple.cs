@@ -8,18 +8,18 @@ class Example
 
 	static void Main() 
 	{
-		IPConnection ipcon = new IPConnection(HOST, PORT); // Create connection to brickd
-		BrickletAmbientLight al = new BrickletAmbientLight(UID); // Create device object
-		ipcon.AddDevice(al); // Add device to IP connection
-		// Don't use device before it is added to a connection
+		IPConnection ipcon = new IPConnection(); // Create IP connection
+		BrickletAmbientLight al = new BrickletAmbientLight(UID, ipcon); // Create device object
+
+		ipcon.Connect(HOST, PORT); // Connect to brickd
+		// Don't use device before ipcon is connected
 
 		// Get current illuminance (unit is Lux/10)
-		ushort illuminance = al.GetIlluminance();
+		int illuminance = al.GetIlluminance();
 
 		System.Console.WriteLine("Illuminance: " + illuminance/10.0 + " Lux");
 
 		System.Console.WriteLine("Press key to exit");
 		System.Console.ReadKey();
-		ipcon.Destroy();
 	}
 }
