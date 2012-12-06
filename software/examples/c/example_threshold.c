@@ -10,6 +10,8 @@
 
 // Callback for illuminance greater than 200 Lux
 void cb_reached(uint16_t illuminance, void *user_data) {
+	(void)user_data; // avoid unused parameter warning
+
 	printf("We have %f Lux.\n", illuminance/10.0);
 	printf("Too bright, close the curtains!\n");
 }
@@ -37,7 +39,7 @@ int main() {
 	ambient_light_register_callback(&al,
 	                                AMBIENT_LIGHT_CALLBACK_ILLUMINANCE_REACHED,
 	                                cb_reached,
-									NULL);
+	                                NULL);
 
 	// Configure threshold for "greater than 200 Lux" (unit is Lux/10)
 	ambient_light_set_illuminance_callback_threshold(&al, '>', 200*10, 0);

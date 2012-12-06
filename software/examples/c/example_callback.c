@@ -10,6 +10,8 @@
 
 // Callback function for illuminance callback (parameter has unit Lux/10)
 void cb_illuminance(uint16_t illuminance, void *user_data) {
+	(void)user_data; // avoid unused parameter warning
+
 	printf("Illuminance: %f Lux.\n", illuminance/10.0);
 }
 
@@ -36,9 +38,9 @@ int main() {
 
 	// Register illuminance callback to function cb_illuminance
 	ambient_light_register_callback(&al,
-	                                AMBIENT_LIGHT_CALLBACK_ILLUMINANCE, 
+	                                AMBIENT_LIGHT_CALLBACK_ILLUMINANCE,
 	                                cb_illuminance,
-									NULL);
+	                                NULL);
 
 	printf("Press key to exit\n");
 	getchar();
