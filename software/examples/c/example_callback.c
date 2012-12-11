@@ -39,7 +39,7 @@ int main() {
 	// Register illuminance callback to function cb_illuminance
 	ambient_light_register_callback(&al,
 	                                AMBIENT_LIGHT_CALLBACK_ILLUMINANCE,
-	                                cb_illuminance,
+	                                (void *)cb_illuminance,
 	                                NULL);
 
 	printf("Press key to exit\n");

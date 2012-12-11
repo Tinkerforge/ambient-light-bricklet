@@ -38,7 +38,7 @@ int main() {
 	// Register threshold reached callback to function cb_reached
 	ambient_light_register_callback(&al,
 	                                AMBIENT_LIGHT_CALLBACK_ILLUMINANCE_REACHED,
-	                                cb_reached,
+	                                (void *)cb_reached,
 	                                NULL);
 
 	// Configure threshold for "greater than 200 Lux" (unit is Lux/10)
