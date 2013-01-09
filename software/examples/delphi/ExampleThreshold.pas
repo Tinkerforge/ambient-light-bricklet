@@ -12,7 +12,7 @@ type
     ipcon: TIPConnection;
     al: TBrickletAmbientLight;
   public
-    procedure ReachedCB(sender: TObject; const illuminance: word);
+    procedure ReachedCB(sender: TBrickletAmbientLight; const illuminance: word);
     procedure Execute;
   end;
 
@@ -25,7 +25,7 @@ var
   e: TExample;
 
 { Callback for illuminance greater than 200 Lux }
-procedure TExample.ReachedCB(sender: TObject; const illuminance: word);
+procedure TExample.ReachedCB(sender: TBrickletAmbientLight; const illuminance: word);
 begin
   WriteLn(Format('We have %f Lux.', [illuminance/10.0]));
   WriteLn('Too bright, close the curtains!');

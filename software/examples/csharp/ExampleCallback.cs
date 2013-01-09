@@ -7,7 +7,7 @@ class Example
 	private static string UID = "ABC"; // Change to your UID
 
 	// Callback function for illuminance callback (parameter has unit Lux/10)
-	static void IlluminanceCB(object sender, int illuminance)
+	static void IlluminanceCB(BrickletAmbientLight sender, int illuminance)
 	{
 		System.Console.WriteLine("Illuminance: " + illuminance/10.0 + " Lux");
 	}

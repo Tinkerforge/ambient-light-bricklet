@@ -7,7 +7,7 @@ class Example
 	private static string UID = "ABC"; // Change to your UID
 
 	// Callback for illuminance greater than 200 Lux
-	static void ReachedCB(object sender, int illuminance)
+	static void ReachedCB(BrickletAmbientLight sender, int illuminance)
 	{
 		System.Console.WriteLine("We have " + illuminance/10.0 + " Lux.");
 		System.Console.WriteLine("Too bright, close the curtains!");
