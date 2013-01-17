@@ -23,7 +23,7 @@ public class ExampleThreshold {
 
 		// Add and implement illuminance reached listener 
 		// (called if illuminance is greater than 200 lux)
-		al.addListener(new BrickletAmbientLight.IlluminanceReachedListener() {
+		al.addIlluminanceReachedListener(new BrickletAmbientLight.IlluminanceReachedListener() {
 			public void illuminanceReached(int illuminance) {
 				System.out.println("We have: " + illuminance/10.0 + " Lux.");
 				System.out.println("Too bright, close the curtains!");

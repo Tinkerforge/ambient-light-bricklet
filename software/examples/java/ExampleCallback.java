@@ -21,7 +21,7 @@ public class ExampleCallback {
 		al.setIlluminanceCallbackPeriod(1000);
 
 		// Add and implement illuminance listener (called if illuminance changes)
-		al.addListener(new BrickletAmbientLight.IlluminanceListener() {
+		al.addIlluminanceListener(new BrickletAmbientLight.IlluminanceListener() {
 			public void illuminance(int illuminance) {
 				System.out.println("Illuminance: " + illuminance/10.0 + " Lux");
 			}
