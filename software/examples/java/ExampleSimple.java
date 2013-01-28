@@ -16,7 +16,7 @@ public class ExampleSimple {
 		// Don't use device before ipcon is connected
 
 		// Get current illuminance (unit is Lux/10)
-		int illuminance = al.getIlluminance(); // Can throw IPConnection.TimeoutException
+		int illuminance = al.getIlluminance(); // Can throw com.tinkerforge.TimeoutException
 
 		System.out.println("Illuminance: " + illuminance/10.0 + " Lux");
 
