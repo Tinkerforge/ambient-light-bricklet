@@ -22,3 +22,4 @@ puts "Illuminance: #{illuminance} Lux"
 
 puts 'Press key to exit'
 $stdin.gets
+ipcon.disconnect

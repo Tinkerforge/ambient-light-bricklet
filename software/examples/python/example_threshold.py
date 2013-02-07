@@ -30,3 +30,4 @@ if __name__ == "__main__":
     al.set_illuminance_callback_threshold('>', 200*10, 0)
 
     raw_input('Press key to exit\n') # Use input() in Python 3
+    ipcon.disconnect()

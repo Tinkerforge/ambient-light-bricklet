@@ -30,3 +30,4 @@ al.set_illuminance_callback_threshold '>', 200*10, 0
 
 puts 'Press key to exit'
 $stdin.gets
+ipcon.disconnect

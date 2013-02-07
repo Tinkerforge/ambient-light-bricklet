@@ -28,3 +28,4 @@ if __name__ == "__main__":
     al.register_callback(al.CALLBACK_ILLUMINANCE, cb_illuminance)
 
     raw_input('Press key to exit\n') # Use input() in Python 3
+    ipcon.disconnect()

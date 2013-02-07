@@ -23,5 +23,6 @@ echo "Illuminance: $illuminance Lux\n";
 
 echo "Press key to exit\n";
 fgetc(fopen('php://stdin', 'r'));
+$ipcon->disconnect();
 
 ?>
