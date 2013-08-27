@@ -1,5 +1,6 @@
 /* ambient-light-bricklet
  * Copyright (C) 2010-2012 Olaf Lüke <olaf@tinkerforge.com>
+ * Copyright (C) 2013 Matthias Bolte <matthias@tinkerforge.com>
  *
  * ambient-light.c: Implementation of Ambient Light Bricklet messages
  *
@@ -67,6 +68,8 @@ void invocation(const ComType com, const uint8_t *data) {
 void constructor(void) {
 	adc_channel_enable(BS->adc_channel);
 	BC->value_avg = 0;
+	BC->value_avg_sum = 0;
+	BC->value_avg_tick = 0;
 
     PIN_RESISTOR_1.type = PIO_OUTPUT_0;
     BA->PIO_Configure(&PIN_RESISTOR_1, 1);
@@ -176,7 +179,7 @@ void update_resistor(const uint16_t value) {
 
 int32_t analog_value_from_mc(const int32_t value) {
 	if(BC->new_resistor_set > 0) {
-		return BC->value[0];
+		return BC->value[1];
 	}
 	uint16_t analog_value = BA->adc_channel_get_data(BS->adc_channel);
 	update_resistor(analog_value);
@@ -186,7 +189,7 @@ int32_t analog_value_from_mc(const int32_t value) {
 int32_t illuminance_from_analog_value(const int32_t value) {
 	if(BC->new_resistor_set > 0) {
 		BC->new_resistor_set--;
-		return BC->value[1];
+		return BC->value[0];
 	}
 
 	int32_t illuminance = 0;
@@ -209,10 +212,12 @@ int32_t illuminance_from_analog_value(const int32_t value) {
 
 	BC->value_avg_sum += illuminance;
 
-	if(BC->tick % ILLUMINANCE_AVERAGE == 0) {
+	if(BC->value_avg_tick % ILLUMINANCE_AVERAGE == 0) {
 		BC->value_avg = BC->value_avg_sum/ILLUMINANCE_AVERAGE;
 		BC->value_avg_sum = 0;
 	}
+
+	++BC->value_avg_tick;
 
 	return BC->value_avg;
 }

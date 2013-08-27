@@ -1,5 +1,6 @@
 /* ambient-light-bricklet
  * Copyright (C) 2010-2012 Olaf Lüke <olaf@tinkerforge.com>
+ * Copyright (C) 2013 Matthias Bolte <matthias@tinkerforge.com>
  *
  * config.h: Ambient Light Bricklet specific configuration
  *
@@ -31,7 +32,7 @@
 
 #define BRICKLET_FIRMWARE_VERSION_MAJOR 2
 #define BRICKLET_FIRMWARE_VERSION_MINOR 0
-#define BRICKLET_FIRMWARE_VERSION_REVISION 1
+#define BRICKLET_FIRMWARE_VERSION_REVISION 2
 
 #define BRICKLET_HARDWARE_VERSION_MAJOR 1
 #define BRICKLET_HARDWARE_VERSION_MINOR 1
@@ -83,6 +84,7 @@ typedef struct {
 	int32_t last_value[NUM_SIMPLE_VALUES];
 	int16_t value_avg;
 	int32_t value_avg_sum;
+	uint32_t value_avg_tick;
 
 	uint32_t signal_period[NUM_SIMPLE_VALUES];
 	uint32_t signal_period_counter[NUM_SIMPLE_VALUES];
