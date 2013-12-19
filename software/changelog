@@ -3,3 +3,4 @@
 2.0.0: Support for protocol 2.0
 2.0.1: Don't send threshold callback twice
 2.0.2: Fix jumps in average value calculation due to range switches
+2.0.3: Fix wrong length for GetDebounce packet (through brickletlib)
