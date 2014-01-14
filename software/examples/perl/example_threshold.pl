@@ -13,6 +13,8 @@ my $al = BrickletAmbientLight->new(&UID, $ipcon); # Create device object
 # Callback for illuminance greater than 200 Lux
 sub cb_reached
 {
+    my ($illuminance) = @_;
+
     print "\nWe have ".$illuminance/10.0." Lux";
     print "\nToo bright, close the curtains\n";
 }
