@@ -6,9 +6,9 @@ require_once('Tinkerforge/BrickletAmbientLight.php');
 use Tinkerforge\IPConnection;
 use Tinkerforge\BrickletAmbientLight;
 
-$host = 'localhost';
-$port = 4223;
-$uid = '7tS'; // Change to your UID
+const HOST = 'localhost';
+const PORT = 4223;
+const UID = '7tS'; // Change to your UID
 
 // Callback for illuminance greater than 200 Lux
 function cb_reached($illuminance)
@@ -18,9 +18,9 @@ function cb_reached($illuminance)
 }
 
 $ipcon = new IPConnection(); // Create IP connection
-$al = new BrickletAmbientLight($uid, $ipcon); // Create device object
+$al = new BrickletAmbientLight(UID, $ipcon); // Create device object
 
-$ipcon->connect($host, $port); // Connect to brickd
+$ipcon->connect(HOST, PORT); // Connect to brickd
 // Don't use device before ipcon is connected
 
 // Get threshold callbacks with a debounce time of 10 seconds (10000ms)
