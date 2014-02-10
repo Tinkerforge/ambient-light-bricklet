@@ -7,8 +7,8 @@ use constant HOST => 'localhost';
 use constant PORT => 4223;
 use constant UID => '6Ma'; # Change to your UID
 
-my $ipcon = IPConnection->new(); # Create IP connection
-my $al = BrickletAmbientLight->new(&UID, $ipcon); # Create device object
+my $ipcon = Tinkerforge::IPConnection->new(); # Create IP connection
+my $al = Tinkerforge::BrickletAmbientLight->new(&UID, $ipcon); # Create device object
 
 # Callback for illuminance greater than 200 Lux
 sub cb_reached
