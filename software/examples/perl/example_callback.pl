@@ -15,7 +15,7 @@ sub cb_illuminance
 {
     my ($illuminance) = @_;
 
-    print "\nIlluminance: ".$illuminance/10.0." Lux\n";
+    print "Illuminance: ".$illuminance/10.0." Lux\n";
 }
 
 $ipcon->connect(&HOST, &PORT); # Connect to brickd
@@ -29,6 +29,6 @@ $al->set_illuminance_callback_period(1000);
 # Register illuminance callback to function cb_illuminance
 $al->register_callback($al->CALLBACK_ILLUMINANCE, 'cb_illuminance');
 
-print "\nPress any key to exit...\n";
+print "Press any key to exit...\n";
 <STDIN>;
 $ipcon->disconnect();

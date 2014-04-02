@@ -15,8 +15,8 @@ sub cb_reached
 {
     my ($illuminance) = @_;
 
-    print "\nWe have ".$illuminance/10.0." Lux";
-    print "\nToo bright, close the curtains\n";
+    print "We have ".$illuminance/10.0." Lux\n";
+    print "Too bright, close the curtains\n";
 }
 
 $ipcon->connect(&HOST, &PORT); # Connect to brickd
@@ -31,6 +31,6 @@ $al->register_callback($al->CALLBACK_ILLUMINANCE_REACHED, 'cb_reached');
 # Configure threshold for "greater than 200 Lux" (unit is Lux/10)
 $al->set_illuminance_callback_threshold('>', 200*10, 0);
 
-print "\nPress any key to exit...\n";
+print "Press any key to exit...\n";
 <STDIN>;
 $ipcon->disconnect();
