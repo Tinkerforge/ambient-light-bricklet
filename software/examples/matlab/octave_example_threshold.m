@@ -1,4 +1,4 @@
-function octave_example_threshold
+function octave_example_threshold()
     more off;
     
     HOST = "localhost";
@@ -29,4 +29,3 @@ function cb_reached(e)
     fprintf('We have %g Lux.\n', e.illuminance/10.0);
     fprintf('Too bright, close the curtains!\n')
 end
-
