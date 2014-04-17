@@ -1,6 +1,6 @@
 function octave_example_simple
     more off;
-    
+
     HOST = "localhost";
     PORT = 4223;
     UID = "amb"; % Change to your UID
@@ -12,10 +12,9 @@ function octave_example_simple
     % Don't use device before ipcon is connected
 
     % Get current illuminance (unit is Lux/10)
-    illuminance = al.getIlluminance()/10;
+    illuminance = al.getIlluminance();
+    fprintf("Illuminance: %g Lux\n", illuminance/10.0);
 
-    fprintf("Illuminance: %g Lux\n", illuminance);
-
-    input("\nPress any key to exit...\n", "s");
+    input("Press any key to exit...\n", "s");
     ipcon.disconnect();
 end
