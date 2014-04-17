@@ -26,6 +26,6 @@ end
 
 % Callback function for illuminance callback (parameter has unit Lux/10)
 function cb_reached(e)
-    fprintf('We have %g Lux.\n', e.illuminance/10.0);
-    fprintf('Too bright, close the curtains!\n')
+    fprintf("We have %g Lux.\n", e.illuminance/10.0);
+    fprintf("Too bright, close the curtains!\n")
 end
