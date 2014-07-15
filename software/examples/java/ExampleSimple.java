@@ -20,7 +20,7 @@ public class ExampleSimple {
 
 		System.out.println("Illuminance: " + illuminance/10.0 + " Lux");
 
-		System.console().readLine("Press key to exit\n");
+		System.out.println("Press key to exit"); System.in.read();
 		ipcon.disconnect();
 	}
 }
