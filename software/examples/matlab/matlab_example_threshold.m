@@ -19,7 +19,7 @@ function matlab_example_threshold()
     set(al, 'IlluminanceReachedCallback', @(h, e) cb_reached(e));
 
     % Configure threshold for "greater than 200 Lux" (unit is Lux/10)
-    al.setIlluminanceCallbackThreshold('o', 20*10, 0);
+    al.setIlluminanceCallbackThreshold('>', 20*10, 0);
 
     input('Press any key to exit...\n', 's');
     ipcon.disconnect();
