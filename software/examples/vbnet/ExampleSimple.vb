@@ -18,7 +18,7 @@ Module ExampleSimple
         System.Console.WriteLine("Illuminance: " + (illuminance/10.0).ToString() + " Lux")
 
         System.Console.WriteLine("Press key to exit")
-        System.Console.ReadKey()
+        System.Console.ReadLine()
         ipcon.Disconnect()
     End Sub
 End Module
