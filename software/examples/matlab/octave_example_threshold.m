@@ -15,7 +15,7 @@ function octave_example_threshold()
     al.setDebouncePeriod(10000);
 
     % Configure threshold for "greater than 200 Lux" (unit is Lux/10)
-    al.setIlluminanceCallbackThreshold(al.THRESHOLD_OPTION_GREATER, 20*10, 0);
+    al.setIlluminanceCallbackThreshold(al.THRESHOLD_OPTION_GREATER, 200*10, 0);
     
     % Register threshold reached callback to function cb_reached
     al.addIlluminanceReachedCallback(@cb_reached);
