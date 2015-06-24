@@ -51,8 +51,7 @@
                 al.on(Tinkerforge.BrickletAmbientLight.CALLBACK_ILLUMINANCE,
                     // Callback function for illuminance callback (parameter has unit Lux/10)
                     function(illuminance) {
-                        textArea.value += 'Illuminance: '+illuminance/10+' Lux';
-                        textArea.value += '\n';
+                        textArea.value += 'Illuminance: '+illuminance/10+' Lux\n';
                         textArea.scrollTop = textArea.scrollHeight;
                     }
                 );

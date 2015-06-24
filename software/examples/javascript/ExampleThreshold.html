@@ -52,8 +52,7 @@
                     // Callback for illuminance greater than 200 Lux
                     function(illuminance) {
                         textArea.value += 'We have ' +illuminance/10 + ' Lux.\n';
-                        textArea.value += 'Too bright, close the curtains!';
-                        textArea.value += '\n';
+                        textArea.value += 'Too bright, close the curtains!\n';
                         textArea.scrollTop = textArea.scrollHeight;
                     }
                 );
