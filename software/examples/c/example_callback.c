@@ -11,7 +11,7 @@
 void cb_illuminance(uint16_t illuminance, void *user_data) {
 	(void)user_data; // avoid unused parameter warning
 
-	printf("Illuminance: %f Lux.\n", illuminance/10.0);
+	printf("Illuminance: %f Lux\n", illuminance/10.0);
 }
 
 int main() {
