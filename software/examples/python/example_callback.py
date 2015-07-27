@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-  
+# -*- coding: utf-8 -*-
 
 HOST = "localhost"
 PORT = 4223
@@ -19,9 +19,9 @@ if __name__ == "__main__":
     ipcon.connect(HOST, PORT) # Connect to brickd
     # Don't use device before ipcon is connected
 
-    # Set Period for illuminance callback to 1s (1000ms)
-    # Note: The illuminance callback is only called every second if the 
-    #       illuminance has changed since the last call!
+    # Set period for illuminance callback to 1s (1000ms)
+    # Note: The illuminance callback is only called every second
+    #       if the illuminance has changed since the last call!
     al.set_illuminance_callback_period(1000)
 
     # Register illuminance callback to function cb_illuminance

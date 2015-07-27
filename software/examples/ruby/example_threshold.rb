@@ -8,7 +8,7 @@ include Tinkerforge
 
 HOST = 'localhost'
 PORT = 4223
-UID = '7tS' # Change to your UID
+UID = 'XYZ' # Change to your UID
 
 ipcon = IPConnection.new # Create IP connection
 al = BrickletAmbientLight.new UID, ipcon # Create device object
@@ -19,14 +19,14 @@ ipcon.connect HOST, PORT # Connect to brickd
 # Get threshold callbacks with a debounce time of 10 seconds (10000ms)
 al.set_debounce_period 10000
 
-# Register threshold reached callback for illuminance greater than 200 Lux
+# Register threshold reached callback for illuminance greater than 500 Lux (parameter has unit Lux/10)
 al.register_callback(BrickletAmbientLight::CALLBACK_ILLUMINANCE_REACHED) do |illuminance|
-  puts "We have #{illuminance/10.0} Lux."
+  puts "Illuminance: #{illuminance/10.0} Lux"
   puts "Too bright, close the curtains!"
 end
 
-# Configure threshold for "greater than 200 Lux" (unit is Lux/10)
-al.set_illuminance_callback_threshold '>', 200*10, 0
+# Configure threshold for "greater than 500 Lux" (unit is Lux/10)
+al.set_illuminance_callback_threshold '>', 500*10, 0
 
 puts 'Press key to exit'
 $stdin.gets

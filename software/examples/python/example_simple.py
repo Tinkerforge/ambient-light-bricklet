@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-  
+# -*- coding: utf-8 -*-
 
 HOST = "localhost"
 PORT = 4223
@@ -16,9 +16,8 @@ if __name__ == "__main__":
     # Don't use device before ipcon is connected
 
     # Get current illuminance (unit is Lux/10)
-    illuminance = al.get_illuminance()/10.0
-
-    print('Illuminance: ' + str(illuminance) + ' Lux')
+    illuminance = al.get_illuminance()
+    print('Illuminance: ' + str(illuminance/10.0) + ' Lux')
 
     raw_input('Press key to exit\n') # Use input() in Python 3
     ipcon.disconnect()

@@ -21,7 +21,7 @@ int main() {
 
 	// Create device object
 	AmbientLight al;
-	ambient_light_create(&al, UID, &ipcon); 
+	ambient_light_create(&al, UID, &ipcon);
 
 	// Connect to brickd
 	if(ipcon_connect(&ipcon, HOST, PORT) < 0) {
@@ -30,9 +30,9 @@ int main() {
 	}
 	// Don't use device before ipcon is connected
 
-	// Set Period for illuminance callback to 1s (1000ms)
-	// Note: The illuminance callback is only called every second if the 
-	//       illuminance has changed since the last call!
+	// Set period for illuminance callback to 1s (1000ms)
+	// Note: The illuminance callback is only called every second
+	//       if the illuminance has changed since the last call!
 	ambient_light_set_illuminance_callback_period(&al, 1000);
 
 	// Register illuminance callback to function cb_illuminance

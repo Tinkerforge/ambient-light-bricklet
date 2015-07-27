@@ -4,9 +4,9 @@ class Example
 {
 	private static string HOST = "localhost";
 	private static int PORT = 4223;
-	private static string UID = "ABC"; // Change to your UID
+	private static string UID = "XYZ"; // Change to your UID
 
-	static void Main() 
+	static void Main()
 	{
 		IPConnection ipcon = new IPConnection(); // Create IP connection
 		BrickletAmbientLight al = new BrickletAmbientLight(UID, ipcon); // Create device object
@@ -16,7 +16,6 @@ class Example
 
 		// Get current illuminance (unit is Lux/10)
 		int illuminance = al.GetIlluminance();
-
 		System.Console.WriteLine("Illuminance: " + illuminance/10.0 + " Lux");
 
 		System.Console.WriteLine("Press enter to exit");
