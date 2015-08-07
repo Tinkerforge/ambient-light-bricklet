@@ -6,7 +6,7 @@ PORT = 4223
 UID = "XYZ" # Change to your UID
 
 from tinkerforge.ip_connection import IPConnection
-from tinkerforge.bricklet_ambient_light import AmbientLight
+from tinkerforge.bricklet_ambient_light import BrickletAmbientLight
 
 # Callback function for illuminance callback (parameter has unit Lux/10)
 def cb_illuminance(illuminance):
@@ -14,7 +14,7 @@ def cb_illuminance(illuminance):
 
 if __name__ == "__main__":
     ipcon = IPConnection() # Create IP connection
-    al = AmbientLight(UID, ipcon) # Create device object
+    al = BrickletAmbientLight(UID, ipcon) # Create device object
 
     ipcon.connect(HOST, PORT) # Connect to brickd
     # Don't use device before ipcon is connected
