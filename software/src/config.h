@@ -77,12 +77,13 @@
 #define BRICKLET_HAS_SIMPLE_SENSOR
 #define BRICKLET_NO_OFFSET
 #define INVOCATION_IN_BRICKLET_CODE
+#define SIMPLE_VALUE_TYPE uint16_t
 #define NUM_SIMPLE_VALUES 2
 
 typedef struct {
 	int32_t value[NUM_SIMPLE_VALUES];
 	int32_t last_value[NUM_SIMPLE_VALUES];
-	int16_t value_avg;
+	uint16_t value_avg;
 	int32_t value_avg_sum;
 	uint32_t value_avg_tick;
 
