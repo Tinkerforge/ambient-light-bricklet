@@ -19,12 +19,12 @@ type
 const
   HOST = 'localhost';
   PORT = 4223;
-  UID = '7tS'; { Change to your UID }
+  UID = 'XYZ'; { Change to your UID }
 
 var
   e: TExample;
 
-{ Callback function for illuminance callback (parameter has unit Lux/10) }
+{ Callback procedure for illuminance callback (parameter has unit Lux/10) }
 procedure TExample.IlluminanceCB(sender: TBrickletAmbientLight; const illuminance: word);
 begin
   WriteLn(Format('Illuminance: %f Lux', [illuminance/10.0]));
@@ -42,9 +42,9 @@ begin
   ipcon.Connect(HOST, PORT);
   { Don't use device before ipcon is connected }
 
-  { Set Period for illuminance callback to 1s (1000ms)
-    Note: The illuminance callback is only called every second if the
-          illuminance has changed since the last call! }
+  { Set period for illuminance callback to 1s (1000ms)
+    Note: The illuminance callback is only called every second
+          if the illuminance has changed since the last call! }
   al.SetIlluminanceCallbackPeriod(1000);
 
   { Register illuminance callback to procedure IlluminanceCB }

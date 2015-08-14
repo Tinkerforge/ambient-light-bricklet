@@ -12,22 +12,22 @@ type
     ipcon: TIPConnection;
     al: TBrickletAmbientLight;
   public
-    procedure ReachedCB(sender: TBrickletAmbientLight; const illuminance: word);
+    procedure IlluminanceReachedCB(sender: TBrickletAmbientLight; const illuminance: word);
     procedure Execute;
   end;
 
 const
   HOST = 'localhost';
   PORT = 4223;
-  UID = '7tS'; { Change to your UID }
+  UID = 'XYZ'; { Change to your UID }
 
 var
   e: TExample;
 
-{ Callback for illuminance greater than 200 Lux }
-procedure TExample.ReachedCB(sender: TBrickletAmbientLight; const illuminance: word);
+{ Callback procedure for illuminance greater than 500 Lux (parameter has unit Lux/10) }
+procedure TExample.IlluminanceReachedCB(sender: TBrickletAmbientLight; const illuminance: word);
 begin
-  WriteLn(Format('We have %f Lux.', [illuminance/10.0]));
+  WriteLn(Format('Illuminance: %f Lux', [illuminance/10.0]));
   WriteLn('Too bright, close the curtains!');
 end;
 
@@ -46,11 +46,11 @@ begin
   { Get threshold callbacks with a debounce time of 10 seconds (10000ms) }
   al.SetDebouncePeriod(10000);
 
-  { Register threshold reached callback to procedure ReachedCB }
-  al.OnIlluminanceReached := {$ifdef FPC}@{$endif}ReachedCB;
+  { Register threshold reached callback to procedure IlluminanceReachedCB }
+  al.OnIlluminanceReached := {$ifdef FPC}@{$endif}IlluminanceReachedCB;
 
-  { Configure threshold for "greater than 200 Lux" (unit is Lux/10) }
-  al.SetIlluminanceCallbackThreshold('>', 200*10, 0);
+  { Configure threshold for "greater than 500 Lux" (unit is Lux/10) }
+  al.SetIlluminanceCallbackThreshold('>', 500*10, 0);
 
   WriteLn('Press key to exit');
   ReadLn;
