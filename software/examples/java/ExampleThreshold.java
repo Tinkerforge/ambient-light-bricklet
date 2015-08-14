@@ -19,7 +19,7 @@ public class ExampleThreshold {
 		al.setDebouncePeriod(10000);
 
 		// Configure threshold for "greater than 500 Lux" (unit is Lux/10)
-		al.setIlluminanceCallbackThreshold('>', (short)(500*10), (short)0);
+		al.setIlluminanceCallbackThreshold('>', 500*10, 0);
 
 		// Add threshold reached listener for illuminance greater than 500 Lux (parameter has unit Lux/10)
 		al.addIlluminanceReachedListener(new BrickletAmbientLight.IlluminanceReachedListener() {
