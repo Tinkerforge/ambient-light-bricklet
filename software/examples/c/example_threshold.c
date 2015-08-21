@@ -12,7 +12,7 @@ void cb_illuminance_reached(uint16_t illuminance, void *user_data) {
 	(void)user_data; // avoid unused parameter warning
 
 	printf("Illuminance: %f Lux\n", illuminance/10.0);
-	puts("Too bright, close the curtains!");
+	printf("Too bright, close the curtains!\n");
 }
 
 int main(void) {
