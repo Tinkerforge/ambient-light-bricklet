@@ -4,7 +4,7 @@ function matlab_example_threshold()
 
     HOST = 'localhost';
     PORT = 4223;
-    UID = 'amb'; % Change to your UID
+    UID = 'XYZ'; % Change to your UID
 
     ipcon = IPConnection(); % Create IP connection
     al = BrickletAmbientLight(UID, ipcon); % Create device object
@@ -12,21 +12,21 @@ function matlab_example_threshold()
     ipcon.connect(HOST, PORT); % Connect to brickd
     % Don't use device before ipcon is connected
 
-    % Set threshold callbacks with a debounce time of 10 seconds (10000ms)
+    % Get threshold callbacks with a debounce time of 10 seconds (10000ms)
     al.setDebouncePeriod(10000);
 
-    % Register threshold reached callback to function cb_reached
-    set(al, 'IlluminanceReachedCallback', @(h, e) cb_reached(e));
+    % Register illuminance reached callback to function cb_illuminance_reached
+    set(al, 'IlluminanceReachedCallback', @(h, e) cb_illuminance_reached(e));
 
-    % Configure threshold for "greater than 200 Lux" (unit is Lux/10)
+    % Configure threshold for illuminance "greater than 200 Lux" (unit is Lux/10)
     al.setIlluminanceCallbackThreshold('>', 200*10, 0);
 
-    input('Press any key to exit...\n', 's');
+    input('Press key to exit\n', 's');
     ipcon.disconnect();
 end
 
-% Callback for illuminance greater than 200 Lux
-function cb_reached(e)
-    fprintf('We have %g Lux.\n', e.illuminance/10.0);
-    fprintf('Too bright, close the curtains!\n')
+% Callback function for illuminance reached callback (parameter has unit Lux/10)
+function cb_illuminance_reached(e)
+    fprintf('Illuminance: %g Lux\n', e.illuminance/10.0);
+    fprintf('Too bright, close the curtains!\n');
 end

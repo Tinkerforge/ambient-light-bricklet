@@ -8,7 +8,7 @@ use Tinkerforge\BrickletAmbientLight;
 
 const HOST = 'localhost';
 const PORT = 4223;
-const UID = '7tS'; // Change to your UID
+const UID = 'XYZ'; // Change to your UID
 
 $ipcon = new IPConnection(); // Create IP connection
 $al = new BrickletAmbientLight(UID, $ipcon); // Create device object
@@ -17,9 +17,8 @@ $ipcon->connect(HOST, PORT); // Connect to brickd
 // Don't use device before ipcon is connected
 
 // Get current illuminance (unit is Lux/10)
-$illuminance = $al->getIlluminance() / 10.0;
-
-echo "Illuminance: $illuminance Lux\n";
+$illuminance = $al->getIlluminance();
+echo "Illuminance: " . $illuminance/10.0 . " Lux\n";
 
 echo "Press key to exit\n";
 fgetc(fopen('php://stdin', 'r'));

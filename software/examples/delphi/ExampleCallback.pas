@@ -42,13 +42,13 @@ begin
   ipcon.Connect(HOST, PORT);
   { Don't use device before ipcon is connected }
 
+  { Register illuminance callback to procedure IlluminanceCB }
+  al.OnIlluminance := {$ifdef FPC}@{$endif}IlluminanceCB;
+
   { Set period for illuminance callback to 1s (1000ms)
     Note: The illuminance callback is only called every second
           if the illuminance has changed since the last call! }
   al.SetIlluminanceCallbackPeriod(1000);
-
-  { Register illuminance callback to procedure IlluminanceCB }
-  al.OnIlluminance := {$ifdef FPC}@{$endif}IlluminanceCB;
 
   WriteLn('Press key to exit');
   ReadLn;

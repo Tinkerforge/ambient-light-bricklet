@@ -4,7 +4,7 @@ function matlab_example_callback()
 
     HOST = 'localhost';
     PORT = 4223;
-    UID = 'amb'; % Change to your UID
+    UID = 'XYZ'; % Change to your UID
 
     ipcon = IPConnection(); % Create IP connection
     al = BrickletAmbientLight(UID, ipcon); % Create device object
@@ -12,15 +12,15 @@ function matlab_example_callback()
     ipcon.connect(HOST, PORT); % Connect to brickd
     % Don't use device before ipcon is connected
 
-    % Set Period for illuminance callback to 1s (1000ms)
-    % Note: The callback is only called every second if the
-    %       illuminance has changed since the last call!
-    al.setIlluminanceCallbackPeriod(1000);
-
     % Register illuminance callback to function cb_illuminance
     set(al, 'IlluminanceCallback', @(h, e) cb_illuminance(e));
 
-    input('Press any key to exit...\n', 's');
+    % Set period for illuminance callback to 1s (1000ms)
+    % Note: The illuminance callback is only called every second
+    %       if the illuminance has changed since the last call!
+    al.setIlluminanceCallbackPeriod(1000);
+
+    input('Press key to exit\n', 's');
     ipcon.disconnect();
 end
 

@@ -7,9 +7,6 @@ use constant HOST => 'localhost';
 use constant PORT => 4223;
 use constant UID => 'XYZ'; # Change to your UID
 
-my $ipcon = Tinkerforge::IPConnection->new(); # Create IP connection
-my $al = Tinkerforge::BrickletAmbientLight->new(&UID, $ipcon); # Create device object
-
 # Callback subroutine for illuminance callback (parameter has unit Lux/10)
 sub cb_illuminance
 {
@@ -18,17 +15,20 @@ sub cb_illuminance
     print "Illuminance: " . $illuminance/10.0 . " Lux\n";
 }
 
+my $ipcon = Tinkerforge::IPConnection->new(); # Create IP connection
+my $al = Tinkerforge::BrickletAmbientLight->new(&UID, $ipcon); # Create device object
+
 $ipcon->connect(&HOST, &PORT); # Connect to brickd
 # Don't use device before ipcon is connected
+
+# Register illuminance callback to subroutine cb_illuminance
+$al->register_callback($al->CALLBACK_ILLUMINANCE, 'cb_illuminance');
 
 # Set period for illuminance callback to 1s (1000ms)
 # Note: The illuminance callback is only called every second
 #       if the illuminance has changed since the last call!
 $al->set_illuminance_callback_period(1000);
 
-# Register illuminance callback to subroutine cb_illuminance
-$al->register_callback($al->CALLBACK_ILLUMINANCE, 'cb_illuminance');
-
-print "Press any key to exit...\n";
+print "Press key to exit\n";
 <STDIN>;
 $ipcon->disconnect();

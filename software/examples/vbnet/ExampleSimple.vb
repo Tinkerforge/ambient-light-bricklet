@@ -1,3 +1,4 @@
+Imports System
 Imports Tinkerforge
 
 Module ExampleSimple
@@ -14,10 +15,10 @@ Module ExampleSimple
 
         ' Get current illuminance (unit is Lux/10)
         Dim illuminance As Integer = al.GetIlluminance()
-        System.Console.WriteLine("Illuminance: " + (illuminance/10.0).ToString() + " Lux")
+        Console.WriteLine("Illuminance: " + (illuminance/10.0).ToString() + " Lux")
 
-        System.Console.WriteLine("Press key to exit")
-        System.Console.ReadLine()
+        Console.WriteLine("Press key to exit")
+        Console.ReadLine()
         ipcon.Disconnect()
     End Sub
 End Module

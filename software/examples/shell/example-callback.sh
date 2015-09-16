@@ -1,13 +1,16 @@
 #!/bin/sh
-# connects to localhost:4223 by default, use --host and --port to change it
+# Connects to localhost:4223 by default, use --host and --port to change this
 
-# change to your UID
-uid=XYZ
+uid=XYZ # Change to your UID
 
-# set period for illuminance callback to 1s (1000ms)
-# note: the illuminance callback is only called every second if the
-#       illuminance has changed since the last call!
+# Handle incoming illuminance callbacks (parameter has unit Lux/10)
+tinkerforge dispatch ambient-light-bricklet $uid illuminance &
+
+# Set period for illuminance callback to 1s (1000ms)
+# Note: The illuminance callback is only called every second
+#       if the illuminance has changed since the last call!
 tinkerforge call ambient-light-bricklet $uid set-illuminance-callback-period 1000
 
-# handle incoming illuminance callbacks (unit is Lux/10)
-tinkerforge dispatch ambient-light-bricklet $uid illuminance
+echo "Press key to exit"; read dummy
+
+kill -- -$$ # Stop callback dispatch in background

@@ -8,12 +8,12 @@ use Tinkerforge\BrickletAmbientLight;
 
 const HOST = 'localhost';
 const PORT = 4223;
-const UID = '7tS'; // Change to your UID
+const UID = 'XYZ'; // Change to your UID
 
-// Callback for illuminance greater than 200 Lux
-function cb_reached($illuminance)
+// Callback function for illuminance reached callback (parameter has unit Lux/10)
+function cb_illuminanceReached($illuminance)
 {
-    echo "We have " . $illuminance / 10.0 . " Lux.\n";
+    echo "Illuminance: " . $illuminance/10.0 . " Lux\n";
     echo "Too bright, close the curtains!\n";
 }
 
@@ -26,10 +26,10 @@ $ipcon->connect(HOST, PORT); // Connect to brickd
 // Get threshold callbacks with a debounce time of 10 seconds (10000ms)
 $al->setDebouncePeriod(10000);
 
-// Register threshold reached callback to function cb_reached
-$al->registerCallback(BrickletAmbientLight::CALLBACK_ILLUMINANCE_REACHED, 'cb_reached');
+// Register illuminance reached callback to function cb_illuminanceReached
+$al->registerCallback(BrickletAmbientLight::CALLBACK_ILLUMINANCE_REACHED, 'cb_illuminanceReached');
 
-// Configure threshold for "greater than 200 Lux" (unit is Lux/10)
+// Configure threshold for illuminance "greater than 200 Lux" (unit is Lux/10)
 $al->setIlluminanceCallbackThreshold('>', 200*10, 0);
 
 echo "Press ctrl+c to exit\n";

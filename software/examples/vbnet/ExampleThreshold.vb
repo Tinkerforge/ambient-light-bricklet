@@ -1,3 +1,4 @@
+Imports System
 Imports Tinkerforge
 
 Module ExampleThreshold
@@ -5,10 +6,10 @@ Module ExampleThreshold
     Const PORT As Integer = 4223
     Const UID As String = "XYZ" ' Change to your UID
 
-    ' Callback function for illuminance greater than 500 Lux (parameter has unit Lux/10)
+    ' Callback subroutine for illuminance reached callback (parameter has unit Lux/10)
     Sub IlluminanceReachedCB(ByVal sender As BrickletAmbientLight, ByVal illuminance As Integer)
-        System.Console.WriteLine("Illuminance: " + (illuminance/10.0).ToString() + " Lux")
-        System.Console.WriteLine("Too bright, close the curtains!")
+        Console.WriteLine("Illuminance: " + (illuminance/10.0).ToString() + " Lux")
+        Console.WriteLine("Too bright, close the curtains!")
     End Sub
 
     Sub Main()
@@ -21,14 +22,14 @@ Module ExampleThreshold
         ' Get threshold callbacks with a debounce time of 10 seconds (10000ms)
         al.SetDebouncePeriod(10000)
 
-        ' Register threshold reached callback to function IlluminanceReachedCB
+        ' Register illuminance reached callback to subroutine IlluminanceReachedCB
         AddHandler al.IlluminanceReached, AddressOf IlluminanceReachedCB
 
-        ' Configure threshold for "greater than 500 Lux" (unit is Lux/10)
-        al.SetIlluminanceCallbackThreshold(">"C, 500*10, 0)
+        ' Configure threshold for illuminance "greater than 200 Lux" (unit is Lux/10)
+        al.SetIlluminanceCallbackThreshold(">"C, 200*10, 0)
 
-        System.Console.WriteLine("Press key to exit")
-        System.Console.ReadLine()
+        Console.WriteLine("Press key to exit")
+        Console.ReadLine()
         ipcon.Disconnect()
     End Sub
 End Module

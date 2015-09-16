@@ -30,16 +30,16 @@ int main(void) {
 	}
 	// Don't use device before ipcon is connected
 
-	// Set period for illuminance callback to 1s (1000ms)
-	// Note: The illuminance callback is only called every second
-	//       if the illuminance has changed since the last call!
-	ambient_light_set_illuminance_callback_period(&al, 1000);
-
 	// Register illuminance callback to function cb_illuminance
 	ambient_light_register_callback(&al,
 	                                AMBIENT_LIGHT_CALLBACK_ILLUMINANCE,
 	                                (void *)cb_illuminance,
 	                                NULL);
+
+	// Set period for illuminance callback to 1s (1000ms)
+	// Note: The illuminance callback is only called every second
+	//       if the illuminance has changed since the last call!
+	ambient_light_set_illuminance_callback_period(&al, 1000);
 
 	printf("Press key to exit\n");
 	getchar();

@@ -1,3 +1,4 @@
+using System;
 using Tinkerforge;
 
 class Example
@@ -9,7 +10,7 @@ class Example
 	// Callback function for illuminance callback (parameter has unit Lux/10)
 	static void IlluminanceCB(BrickletAmbientLight sender, int illuminance)
 	{
-		System.Console.WriteLine("Illuminance: " + illuminance/10.0 + " Lux");
+		Console.WriteLine("Illuminance: " + illuminance/10.0 + " Lux");
 	}
 
 	static void Main()
@@ -20,16 +21,16 @@ class Example
 		ipcon.Connect(HOST, PORT); // Connect to brickd
 		// Don't use device before ipcon is connected
 
+		// Register illuminance callback to function IlluminanceCB
+		al.Illuminance += IlluminanceCB;
+
 		// Set period for illuminance callback to 1s (1000ms)
 		// Note: The illuminance callback is only called every second
 		//       if the illuminance has changed since the last call!
 		al.SetIlluminanceCallbackPeriod(1000);
 
-		// Register illuminance callback to function IlluminanceCB
-		al.Illuminance += IlluminanceCB;
-
-		System.Console.WriteLine("Press enter to exit");
-		System.Console.ReadLine();
+		Console.WriteLine("Press enter to exit");
+		Console.ReadLine();
 		ipcon.Disconnect();
 	}
 }

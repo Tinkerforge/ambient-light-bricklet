@@ -1,3 +1,4 @@
+using System;
 using Tinkerforge;
 
 class Example
@@ -6,11 +7,11 @@ class Example
 	private static int PORT = 4223;
 	private static string UID = "XYZ"; // Change to your UID
 
-	// Callback function for illuminance greater than 500 Lux (parameter has unit Lux/10)
+	// Callback function for illuminance reached callback (parameter has unit Lux/10)
 	static void IlluminanceReachedCB(BrickletAmbientLight sender, int illuminance)
 	{
-		System.Console.WriteLine("Illuminance: " + illuminance/10.0 + " Lux");
-		System.Console.WriteLine("Too bright, close the curtains!");
+		Console.WriteLine("Illuminance: " + illuminance/10.0 + " Lux");
+		Console.WriteLine("Too bright, close the curtains!");
 	}
 
 	static void Main()
@@ -24,14 +25,14 @@ class Example
 		// Get threshold callbacks with a debounce time of 10 seconds (10000ms)
 		al.SetDebouncePeriod(10000);
 
-		// Register threshold reached callback to function IlluminanceReachedCB
+		// Register illuminance reached callback to function IlluminanceReachedCB
 		al.IlluminanceReached += IlluminanceReachedCB;
 
-		// Configure threshold for "greater than 500 Lux" (unit is Lux/10)
-		al.SetIlluminanceCallbackThreshold('>', 500*10, 0);
+		// Configure threshold for illuminance "greater than 200 Lux" (unit is Lux/10)
+		al.SetIlluminanceCallbackThreshold('>', 200*10, 0);
 
-		System.Console.WriteLine("Press enter to exit");
-		System.Console.ReadLine();
+		Console.WriteLine("Press enter to exit");
+		Console.ReadLine();
 		ipcon.Disconnect();
 	}
 }

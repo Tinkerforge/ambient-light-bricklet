@@ -3,26 +3,26 @@ LoadNETAssembly["Tinkerforge",NotebookDirectory[]<>"../../.."]
 
 host="localhost"
 port=4223
-uid="amb"(* Change to your UID *)
+uid="XYZ"(*Change to your UID*)
 
-(* Create IPConnection and device object *)
+(*Create IPConnection and device object*)
 ipcon=NETNew["Tinkerforge.IPConnection"]
 al=NETNew["Tinkerforge.BrickletAmbientLight",uid,ipcon]
 ipcon@Connect[host,port]
 
-(* Set Period for illuminance callback to 1s (1000ms) *)
-(* Note: The illuminance callback is only called every second if the *)
-(*       illuminance has changed since the last call! *)
-al@SetIlluminanceCallbackPeriod[1000]
-
-(* Callback function for illuminance callback (parameter has unit Lux/10) *)
+(*Callback function for illuminance callback (parameter has unit Lux/10)*)
 IlluminanceCB[sender_,illuminance_]:=
  Print["Illuminance: "<>ToString[N[Quantity[illuminance,"Lux/10"]]]]
 AddEventHandler[al@Illuminance,IlluminanceCB]
 
+(*Set period for illuminance callback to 1s (1000ms)*)
+(*Note: The illuminance callback is only called every second*)
+(*if the illuminance has changed since the last call!*)
+al@SetIlluminanceCallbackPeriod[1000]
+
 Input["Click OK to exit"]
 
-(* Clean up *)
+(*Clean up*)
 ipcon@Disconnect[]
 ReleaseNETObject[al]
 ReleaseNETObject[ipcon]

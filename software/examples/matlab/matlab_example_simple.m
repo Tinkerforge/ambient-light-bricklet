@@ -4,7 +4,7 @@ function matlab_example_simple()
 
     HOST = 'localhost';
     PORT = 4223;
-    UID = 'amb'; % Change to your UID
+    UID = 'XYZ'; % Change to your UID
 
     ipcon = IPConnection(); % Create IP connection
     al = BrickletAmbientLight(UID, ipcon); % Create device object
@@ -16,6 +16,6 @@ function matlab_example_simple()
     illuminance = al.getIlluminance();
     fprintf('Illuminance: %g Lux\n', illuminance/10.0);
 
-    input('Press any key to exit...\n', 's');
+    input('Press key to exit\n', 's');
     ipcon.disconnect();
 end

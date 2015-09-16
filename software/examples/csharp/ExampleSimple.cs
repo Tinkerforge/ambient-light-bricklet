@@ -1,3 +1,4 @@
+using System;
 using Tinkerforge;
 
 class Example
@@ -16,10 +17,10 @@ class Example
 
 		// Get current illuminance (unit is Lux/10)
 		int illuminance = al.GetIlluminance();
-		System.Console.WriteLine("Illuminance: " + illuminance/10.0 + " Lux");
+		Console.WriteLine("Illuminance: " + illuminance/10.0 + " Lux");
 
-		System.Console.WriteLine("Press enter to exit");
-		System.Console.ReadLine();
+		Console.WriteLine("Press enter to exit");
+		Console.ReadLine();
 		ipcon.Disconnect();
 	}
 }
