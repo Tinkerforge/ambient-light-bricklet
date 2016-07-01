@@ -27,7 +27,8 @@ $ipcon->connect(HOST, PORT); // Connect to brickd
 $al->setDebouncePeriod(10000);
 
 // Register illuminance reached callback to function cb_illuminanceReached
-$al->registerCallback(BrickletAmbientLight::CALLBACK_ILLUMINANCE_REACHED, 'cb_illuminanceReached');
+$al->registerCallback(BrickletAmbientLight::CALLBACK_ILLUMINANCE_REACHED,
+                      'cb_illuminanceReached');
 
 // Configure threshold for illuminance "greater than 200 Lux" (unit is Lux/10)
 $al->setIlluminanceCallbackThreshold('>', 200*10, 0);

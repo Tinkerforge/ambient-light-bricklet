@@ -7,7 +7,8 @@ Module ExampleCallback
     Const UID As String = "XYZ" ' Change XYZ to the UID of your Ambient Light Bricklet
 
     ' Callback subroutine for illuminance callback (parameter has unit Lux/10)
-    Sub IlluminanceCB(ByVal sender As BrickletAmbientLight, ByVal illuminance As Integer)
+    Sub IlluminanceCB(ByVal sender As BrickletAmbientLight, _
+                      ByVal illuminance As Integer)
         Console.WriteLine("Illuminance: " + (illuminance/10.0).ToString() + " Lux")
     End Sub
 
