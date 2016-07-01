@@ -4,7 +4,7 @@ Imports Tinkerforge
 Module ExampleThreshold
     Const HOST As String = "localhost"
     Const PORT As Integer = 4223
-    Const UID As String = "XYZ" ' Change to your UID
+    Const UID As String = "XYZ" ' Change XYZ to the UID of your Ambient Light Bricklet
 
     ' Callback subroutine for illuminance reached callback (parameter has unit Lux/10)
     Sub IlluminanceReachedCB(ByVal sender As BrickletAmbientLight, ByVal illuminance As Integer)

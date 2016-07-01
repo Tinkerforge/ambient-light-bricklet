@@ -5,7 +5,7 @@
 
 #define HOST "localhost"
 #define PORT 4223
-#define UID "XYZ" // Change to your UID
+#define UID "XYZ" // Change XYZ to the UID of your Ambient Light Bricklet
 
 // Callback function for illuminance reached callback (parameter has unit Lux/10)
 void cb_illuminance_reached(uint16_t illuminance, void *user_data) {
