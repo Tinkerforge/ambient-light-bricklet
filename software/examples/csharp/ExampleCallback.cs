@@ -22,7 +22,7 @@ class Example
 		// Don't use device before ipcon is connected
 
 		// Register illuminance callback to function IlluminanceCB
-		al.Illuminance += IlluminanceCB;
+		al.IlluminanceCallback += IlluminanceCB;
 
 		// Set period for illuminance callback to 1s (1000ms)
 		// Note: The illuminance callback is only called every second

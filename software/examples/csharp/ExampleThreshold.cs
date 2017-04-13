@@ -26,7 +26,7 @@ class Example
 		al.SetDebouncePeriod(10000);
 
 		// Register illuminance reached callback to function IlluminanceReachedCB
-		al.IlluminanceReached += IlluminanceReachedCB;
+		al.IlluminanceReachedCallback += IlluminanceReachedCB;
 
 		// Configure threshold for illuminance "greater than 200 Lux" (unit is Lux/10)
 		al.SetIlluminanceCallbackThreshold('>', 200*10, 0);
