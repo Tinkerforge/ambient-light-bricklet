@@ -20,7 +20,7 @@ IlluminanceReachedCB[sender_,illuminance_]:=
   Print["Too bright, close the curtains!"]
  ]
 
-AddEventHandler[al@IlluminanceReached,IlluminanceReachedCB]
+AddEventHandler[al@IlluminanceReachedCallback,IlluminanceReachedCB]
 
 (*Configure threshold for illuminance "greater than 200 Lux" (unit is Lux/10)*)
 option=Tinkerforge`BrickletAmbientLight`THRESHOLDUOPTIONUGREATER

@@ -24,7 +24,7 @@ Module ExampleThreshold
         al.SetDebouncePeriod(10000)
 
         ' Register illuminance reached callback to subroutine IlluminanceReachedCB
-        AddHandler al.IlluminanceReached, AddressOf IlluminanceReachedCB
+        AddHandler al.IlluminanceReachedCallback, AddressOf IlluminanceReachedCB
 
         ' Configure threshold for illuminance "greater than 200 Lux" (unit is Lux/10)
         al.SetIlluminanceCallbackThreshold(">"C, 200*10, 0)
