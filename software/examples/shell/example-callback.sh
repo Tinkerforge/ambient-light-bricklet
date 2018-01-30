@@ -3,7 +3,7 @@
 
 uid=XYZ # Change XYZ to the UID of your Ambient Light Bricklet
 
-# Handle incoming illuminance callbacks (parameter has unit Lux/10)
+# Handle incoming illuminance callbacks
 tinkerforge dispatch ambient-light-bricklet $uid illuminance &
 
 # Set period for illuminance callback to 1s (1000ms)

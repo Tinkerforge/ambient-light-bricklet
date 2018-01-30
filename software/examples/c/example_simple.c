@@ -23,14 +23,14 @@ int main(void) {
 	}
 	// Don't use device before ipcon is connected
 
-	// Get current illuminance (unit is Lux/10)
+	// Get current illuminance
 	uint16_t illuminance;
 	if(ambient_light_get_illuminance(&al, &illuminance) < 0) {
 		fprintf(stderr, "Could not get illuminance, probably timeout\n");
 		return 1;
 	}
 
-	printf("Illuminance: %f Lux\n", illuminance/10.0);
+	printf("Illuminance: %f lx\n", illuminance/10.0);
 
 	printf("Press key to exit\n");
 	getchar();

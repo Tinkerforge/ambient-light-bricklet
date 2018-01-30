@@ -10,9 +10,9 @@ ipcon=NETNew["Tinkerforge.IPConnection"]
 al=NETNew["Tinkerforge.BrickletAmbientLight",uid,ipcon]
 ipcon@Connect[host,port]
 
-(*Callback function for illuminance callback (parameter has unit Lux/10)*)
+(*Callback function for illuminance callback*)
 IlluminanceCB[sender_,illuminance_]:=
- Print["Illuminance: "<>ToString[N[Quantity[illuminance,"Lux/10"]]]]
+ Print["Illuminance: "<>ToString[N[Quantity[illuminance,"lx/10"]]]]
 AddEventHandler[al@IlluminanceCallback,IlluminanceCB]
 
 (*Set period for illuminance callback to 1s (1000ms)*)

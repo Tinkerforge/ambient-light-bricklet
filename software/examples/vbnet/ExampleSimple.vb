@@ -13,9 +13,9 @@ Module ExampleSimple
         ipcon.Connect(HOST, PORT) ' Connect to brickd
         ' Don't use device before ipcon is connected
 
-        ' Get current illuminance (unit is Lux/10)
+        ' Get current illuminance
         Dim illuminance As Integer = al.GetIlluminance()
-        Console.WriteLine("Illuminance: " + (illuminance/10.0).ToString() + " Lux")
+        Console.WriteLine("Illuminance: " + (illuminance/10.0).ToString() + " lx")
 
         Console.WriteLine("Press key to exit")
         Console.ReadLine()

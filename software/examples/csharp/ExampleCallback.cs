@@ -7,10 +7,10 @@ class Example
 	private static int PORT = 4223;
 	private static string UID = "XYZ"; // Change XYZ to the UID of your Ambient Light Bricklet
 
-	// Callback function for illuminance callback (parameter has unit Lux/10)
+	// Callback function for illuminance callback
 	static void IlluminanceCB(BrickletAmbientLight sender, int illuminance)
 	{
-		Console.WriteLine("Illuminance: " + illuminance/10.0 + " Lux");
+		Console.WriteLine("Illuminance: " + illuminance/10.0 + " lx");
 	}
 
 	static void Main()

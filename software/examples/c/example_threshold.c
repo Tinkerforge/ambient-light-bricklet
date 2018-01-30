@@ -7,11 +7,11 @@
 #define PORT 4223
 #define UID "XYZ" // Change XYZ to the UID of your Ambient Light Bricklet
 
-// Callback function for illuminance reached callback (parameter has unit Lux/10)
+// Callback function for illuminance reached callback
 void cb_illuminance_reached(uint16_t illuminance, void *user_data) {
 	(void)user_data; // avoid unused parameter warning
 
-	printf("Illuminance: %f Lux\n", illuminance/10.0);
+	printf("Illuminance: %f lx\n", illuminance/10.0);
 	printf("Too bright, close the curtains!\n");
 }
 
@@ -40,7 +40,7 @@ int main(void) {
 	                                (void *)cb_illuminance_reached,
 	                                NULL);
 
-	// Configure threshold for illuminance "greater than 200 Lux" (unit is Lux/10)
+	// Configure threshold for illuminance "greater than 200 lx"
 	ambient_light_set_illuminance_callback_threshold(&al, '>', 200*10, 0);
 
 	printf("Press key to exit\n");

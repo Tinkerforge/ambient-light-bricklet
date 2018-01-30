@@ -41,10 +41,10 @@
 
                 ipcon.on(Tinkerforge.IPConnection.CALLBACK_CONNECTED,
                     function (connectReason) {
-                        // Get current illuminance (unit is Lux/10)
+                        // Get current illuminance
                         al.getIlluminance(
                             function (illuminance) {
-                                textArea.value += 'Illuminance: ' + illuminance/10.0 + ' Lux\n';
+                                textArea.value += 'Illuminance: ' + illuminance/10.0 + ' lx\n';
                             },
                             function (error) {
                                 textArea.value += 'Error: ' + error + '\n';

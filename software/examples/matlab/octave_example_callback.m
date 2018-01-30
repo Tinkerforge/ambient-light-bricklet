@@ -23,7 +23,7 @@ function octave_example_callback()
     ipcon.disconnect();
 end
 
-% Callback function for illuminance callback (parameter has unit Lux/10)
+% Callback function for illuminance callback
 function cb_illuminance(e)
-    fprintf("Illuminance: %g Lux\n", e.illuminance/10.0);
+    fprintf("Illuminance: %g lx\n", e.illuminance/10.0);
 end

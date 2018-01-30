@@ -16,9 +16,9 @@ al = BrickletAmbientLight.new UID, ipcon # Create device object
 ipcon.connect HOST, PORT # Connect to brickd
 # Don't use device before ipcon is connected
 
-# Get current illuminance (unit is Lux/10)
+# Get current illuminance
 illuminance = al.get_illuminance
-puts "Illuminance: #{illuminance/10.0} Lux"
+puts "Illuminance: #{illuminance/10.0} lx"
 
 puts 'Press key to exit'
 $stdin.gets

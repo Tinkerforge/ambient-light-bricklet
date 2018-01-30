@@ -7,11 +7,11 @@
 #define PORT 4223
 #define UID "XYZ" // Change XYZ to the UID of your Ambient Light Bricklet
 
-// Callback function for illuminance callback (parameter has unit Lux/10)
+// Callback function for illuminance callback
 void cb_illuminance(uint16_t illuminance, void *user_data) {
 	(void)user_data; // avoid unused parameter warning
 
-	printf("Illuminance: %f Lux\n", illuminance/10.0);
+	printf("Illuminance: %f lx\n", illuminance/10.0);
 }
 
 int main(void) {

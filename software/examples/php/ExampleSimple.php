@@ -16,9 +16,9 @@ $al = new BrickletAmbientLight(UID, $ipcon); // Create device object
 $ipcon->connect(HOST, PORT); // Connect to brickd
 // Don't use device before ipcon is connected
 
-// Get current illuminance (unit is Lux/10)
+// Get current illuminance
 $illuminance = $al->getIlluminance();
-echo "Illuminance: " . $illuminance/10.0 . " Lux\n";
+echo "Illuminance: " . $illuminance/10.0 . " lx\n";
 
 echo "Press key to exit\n";
 fgetc(fopen('php://stdin', 'r'));

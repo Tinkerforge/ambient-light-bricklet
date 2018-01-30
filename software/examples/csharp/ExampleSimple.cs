@@ -15,9 +15,9 @@ class Example
 		ipcon.Connect(HOST, PORT); // Connect to brickd
 		// Don't use device before ipcon is connected
 
-		// Get current illuminance (unit is Lux/10)
+		// Get current illuminance
 		int illuminance = al.GetIlluminance();
-		Console.WriteLine("Illuminance: " + illuminance/10.0 + " Lux");
+		Console.WriteLine("Illuminance: " + illuminance/10.0 + " lx");
 
 		Console.WriteLine("Press enter to exit");
 		Console.ReadLine();

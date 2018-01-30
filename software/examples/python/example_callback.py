@@ -8,9 +8,9 @@ UID = "XYZ" # Change XYZ to the UID of your Ambient Light Bricklet
 from tinkerforge.ip_connection import IPConnection
 from tinkerforge.bricklet_ambient_light import BrickletAmbientLight
 
-# Callback function for illuminance callback (parameter has unit Lux/10)
+# Callback function for illuminance callback
 def cb_illuminance(illuminance):
-    print("Illuminance: " + str(illuminance/10.0) + " Lux")
+    print("Illuminance: " + str(illuminance/10.0) + " lx")
 
 if __name__ == "__main__":
     ipcon = IPConnection() # Create IP connection

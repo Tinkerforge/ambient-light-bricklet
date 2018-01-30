@@ -6,10 +6,10 @@ Module ExampleCallback
     Const PORT As Integer = 4223
     Const UID As String = "XYZ" ' Change XYZ to the UID of your Ambient Light Bricklet
 
-    ' Callback subroutine for illuminance callback (parameter has unit Lux/10)
+    ' Callback subroutine for illuminance callback
     Sub IlluminanceCB(ByVal sender As BrickletAmbientLight, _
                       ByVal illuminance As Integer)
-        Console.WriteLine("Illuminance: " + (illuminance/10.0).ToString() + " Lux")
+        Console.WriteLine("Illuminance: " + (illuminance/10.0).ToString() + " lx")
     End Sub
 
     Sub Main()

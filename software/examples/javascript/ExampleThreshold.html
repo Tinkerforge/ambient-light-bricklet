@@ -44,16 +44,16 @@
                         // Get threshold callbacks with a debounce time of 10 seconds (10000ms)
                         al.setDebouncePeriod(10000);
 
-                        // Configure threshold for illuminance "greater than 200 Lux" (unit is Lux/10)
+                        // Configure threshold for illuminance "greater than 200 lx"
                         al.setIlluminanceCallbackThreshold('>', 200*10, 0);
                     }
                 );
 
                 // Register illuminance reached callback
                 al.on(Tinkerforge.BrickletAmbientLight.CALLBACK_ILLUMINANCE_REACHED,
-                    // Callback function for illuminance reached callback (parameter has unit Lux/10)
+                    // Callback function for illuminance reached callback
                     function (illuminance) {
-                        textArea.value += 'Illuminance: ' + illuminance/10.0 + ' Lux\n';
+                        textArea.value += 'Illuminance: ' + illuminance/10.0 + ' lx\n';
                         textArea.value += 'Too bright, close the curtains!\n';
                         textArea.scrollTop = textArea.scrollHeight;
                     }

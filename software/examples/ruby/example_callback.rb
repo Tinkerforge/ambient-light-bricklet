@@ -16,9 +16,9 @@ al = BrickletAmbientLight.new UID, ipcon # Create device object
 ipcon.connect HOST, PORT # Connect to brickd
 # Don't use device before ipcon is connected
 
-# Register illuminance callback (parameter has unit Lux/10)
+# Register illuminance callback
 al.register_callback(BrickletAmbientLight::CALLBACK_ILLUMINANCE) do |illuminance|
-  puts "Illuminance: #{illuminance/10.0} Lux"
+  puts "Illuminance: #{illuminance/10.0} lx"
 end
 
 # Set period for illuminance callback to 1s (1000ms)

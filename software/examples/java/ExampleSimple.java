@@ -17,9 +17,9 @@ public class ExampleSimple {
 		ipcon.connect(HOST, PORT); // Connect to brickd
 		// Don't use device before ipcon is connected
 
-		// Get current illuminance (unit is Lux/10)
+		// Get current illuminance
 		int illuminance = al.getIlluminance(); // Can throw com.tinkerforge.TimeoutException
-		System.out.println("Illuminance: " + illuminance/10.0 + " Lux");
+		System.out.println("Illuminance: " + illuminance/10.0 + " lx");
 
 		System.out.println("Press key to exit"); System.in.read();
 		ipcon.disconnect();

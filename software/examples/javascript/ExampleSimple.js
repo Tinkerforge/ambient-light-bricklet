@@ -16,10 +16,10 @@ ipcon.connect(HOST, PORT,
 
 ipcon.on(Tinkerforge.IPConnection.CALLBACK_CONNECTED,
     function (connectReason) {
-        // Get current illuminance (unit is Lux/10)
+        // Get current illuminance
         al.getIlluminance(
             function (illuminance) {
-                console.log('Illuminance: ' + illuminance/10.0 + ' Lux');
+                console.log('Illuminance: ' + illuminance/10.0 + ' lx');
             },
             function (error) {
                 console.log('Error: ' + error);
