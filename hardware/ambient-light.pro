@@ -1,4 +1,4 @@
-update=Do 26 Mär 2015 16:19:53 CET
+update=Mo 19 Feb 2018 19:33:52 CET
 version=1
 last_client=kicad
 [cvpcb]
@@ -49,20 +49,20 @@ LibName12=standard
 LibName13=Logo
 [eeschema]
 version=1
-LibDir=kicad-libraries.pretty
+LibDir=kicad-libraries
 [eeschema/libraries]
-LibName1=power
-LibName2=device
-LibName3=transistors
-LibName4=conn
-LibName5=linear
-LibName6=regul
-LibName7=74xx
-LibName8=cmos4000
-LibName9=adc-dac
-LibName10=memory
-LibName11=xilinx
-LibName12=special
+LibName1=tinkerforge
+LibName2=power
+LibName3=device
+LibName4=transistors
+LibName5=conn
+LibName6=linear
+LibName7=regul
+LibName8=74xx
+LibName9=cmos4000
+LibName10=adc-dac
+LibName11=memory
+LibName12=xilinx
 LibName13=microcontrollers
 LibName14=dsp
 LibName15=microchip
@@ -81,4 +81,3 @@ LibName27=opto
 LibName28=atmel
 LibName29=contrib
 LibName30=valves
-LibName31=tinkerforge
