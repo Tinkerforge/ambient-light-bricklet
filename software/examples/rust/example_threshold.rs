@@ -15,10 +15,10 @@ fn main() -> Result<(), Box<dyn Error>> {
     // Get threshold receivers with a debounce time of 10 seconds (10000ms).
     al.set_debounce_period(10000);
 
-    // Create receiver for illuminance reached events.
-    let illuminance_reached_receiver = al.get_illuminance_reached_receiver();
+    let illuminance_reached_receiver = al.get_illuminance_reached_callback_receiver();
 
-    // Spawn thread to handle received events. This thread ends when the `al` object
+    // Spawn thread to handle received callback messages.
+    // This thread ends when the `al` object
     // is dropped, so there is no need for manual cleanup.
     thread::spawn(move || {
         for illuminance_reached in illuminance_reached_receiver {
