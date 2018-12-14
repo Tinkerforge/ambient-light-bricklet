@@ -19,7 +19,7 @@ func main() {
 	// Don't use device before ipcon is connected.
 
 	al.RegisterIlluminanceCallback(func(illuminance uint16) {
-		fmt.Printf("Illuminance: %d lx\n", float64(illuminance)/10.0)
+		fmt.Printf("Illuminance: %f lx\n", float64(illuminance)/10.0)
 	})
 
 	// Set period for illuminance receiver to 1s (1000ms).
