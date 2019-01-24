@@ -4,6 +4,7 @@ setup:
 	# Handle incoming illuminance callbacks
 	subscribe to tinkerforge/callback/ambient_light_bricklet/XYZ/illuminance
 	publish '{"register": true}' to tinkerforge/register/ambient_light_bricklet/XYZ/illuminance # Register illuminance callback
+	
 	# Set period for illuminance callback to 1s (1000ms)
 	# Note: The illuminance callback is only called every second
 	#       if the illuminance has changed since the last call!

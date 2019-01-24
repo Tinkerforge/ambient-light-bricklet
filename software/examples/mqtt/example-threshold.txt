@@ -3,8 +3,10 @@
 setup:
 	# Get threshold callbacks with a debounce time of 10 seconds (10000ms)
 	publish '{"debounce": 10000}' to tinkerforge/request/ambient-light_bricklet/XYZ/set_debounce_period
+	
 	# Handle incoming illuminance reached callbacks
 	subscribe to tinkerforge/callback/ambient_light_bricklet/XYZ/illuminance_reached
 	publish '{"register": true}' to tinkerforge/register/ambient_light_bricklet/XYZ/illuminance_reached # Register illuminance_reached callback
+	
 	# Configure threshold for illuminance "greater than 200 lx"
-	publish '{"option": "greater", "min_illuminance": 2000, "max_illuminance": 0}' to tinkerforge/request/ambient_light_bricklet/XYZ/set_illuminance_callback_threshold
+	publish '{"option": "greater", "min": 2000, "max": 0}' to tinkerforge/request/ambient_light_bricklet/XYZ/set_illuminance_callback_threshold
