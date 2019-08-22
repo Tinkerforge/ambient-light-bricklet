@@ -33,7 +33,7 @@ int main(void) {
 	// Register illuminance callback to function cb_illuminance
 	ambient_light_register_callback(&al,
 	                                AMBIENT_LIGHT_CALLBACK_ILLUMINANCE,
-	                                (void *)cb_illuminance,
+	                                (void (*)(void))cb_illuminance,
 	                                NULL);
 
 	// Set period for illuminance callback to 1s (1000ms)

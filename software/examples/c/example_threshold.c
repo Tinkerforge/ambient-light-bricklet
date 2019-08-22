@@ -37,7 +37,7 @@ int main(void) {
 	// Register illuminance reached callback to function cb_illuminance_reached
 	ambient_light_register_callback(&al,
 	                                AMBIENT_LIGHT_CALLBACK_ILLUMINANCE_REACHED,
-	                                (void *)cb_illuminance_reached,
+	                                (void (*)(void))cb_illuminance_reached,
 	                                NULL);
 
 	// Configure threshold for illuminance "greater than 200 lx"
