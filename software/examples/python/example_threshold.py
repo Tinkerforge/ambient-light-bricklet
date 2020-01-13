@@ -29,5 +29,5 @@ if __name__ == "__main__":
     # Configure threshold for illuminance "greater than 200 lx"
     al.set_illuminance_callback_threshold(">", 200*10, 0)
 
-    raw_input("Press key to exit\n") # Use input() in Python 3
+    input("Press key to exit\n") # Use raw_input() in Python 2
     ipcon.disconnect()
